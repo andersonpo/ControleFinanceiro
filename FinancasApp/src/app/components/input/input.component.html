@@ -1,0 +1,15 @@
+<input
+  [ngClass]="getClass()"
+  class="input-component"
+  id="{{ name }}"
+  type="{{ type }}"
+  placeholder="{{ placeholder }}"
+  value="{{ value }}"
+  (keydown.enter)="onKeyEnter($event)"
+  (input)="valueChange($event)"
+/>
+<i
+  *ngIf="icon.length > 0"
+  class="input-component-icon fas fa-lg"
+  [ngClass]="icon"
+></i>

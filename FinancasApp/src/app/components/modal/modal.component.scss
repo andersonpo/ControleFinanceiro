@@ -1,0 +1,45 @@
+.modal-overlay {
+  background-color: #0000009a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-component {
+  background-color: var(--branco);
+  border: 2px solid var(--cinzaMedio);
+  width: 90%;
+  border-radius: 6px;
+  outline: none;
+  padding: 8px 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 4px 0 var(--cinzaMedio);
+  min-height: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeOpacityIn 500ms;
+}
+
+.modal-icon-close {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  margin-top: 6px
+}
+
+@keyframes fadeOpacityIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

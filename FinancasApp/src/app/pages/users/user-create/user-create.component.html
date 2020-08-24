@@ -1,0 +1,68 @@
+<app-create-entity name="Usuário" (btnBackClick)="btnVoltar()">
+  <form [formGroup]="createForm" (ngSubmit)="btnSalvar(createForm.value)">
+    <app-card name="cardCreateUser" [width]="600" [height]="400">
+      <div class="row">
+        <div class="col-md-12">
+          <label>Nome</label>
+          <app-input
+            name="txtNome"
+            placeholder="Nome Completo"
+            icon="fa-user"
+            [formGroup]="createForm"
+            formControlName="name"
+            [error]="errorMessage.length > 0"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Email</label>
+          <app-input
+            name="txtEmail"
+            placeholder="Email"
+            icon="fa-at"
+            [formGroup]="createForm"
+            formControlName="email"
+            [error]="errorMessage.length > 0"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>Senha</label>
+          <app-input
+            name="txtSenha"
+            type="password"
+            placeholder="Senha (mínimo de 8 caracteres)"
+            icon="fa-key"
+            [formGroup]="createForm"
+            formControlName="password"
+            [error]="errorMessage.length > 0"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <app-button
+            name="btnSalvar"
+            type="submit"
+            text="Salvar"
+            [disabled]="!createForm.valid"
+            color="vermelho"
+          ></app-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="error"
+            style="text-align: center;"
+            *ngIf="errorMessage.length > 0"
+          >
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </form>
+</app-create-entity>

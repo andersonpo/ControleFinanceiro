@@ -1,0 +1,22 @@
+<i
+  class="select-icon-remove fas fa-lg fa-times"
+  [style.display]="getIconRemoveDisplay()"
+  (click)="handleItemClick(null)"
+></i>
+<i class="select-icon fas fa-lg" [ngClass]="getClassIcon()"></i>
+<input
+  class="select-component"
+  readonly
+  type="text"
+  id="{{ name }}"
+  placeholder="{{ placeholder }}"
+  [ngClass]="getClass()"
+  value="{{ selectedItem?.text }}"
+/>
+<div class="select-component-items" [style.display]="getDisplayItems()">
+  <ul>
+    <li *ngFor="let item of items" (click)="handleItemClick(item)">
+      {{ item.text }}
+    </li>
+  </ul>
+</div>

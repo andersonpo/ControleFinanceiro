@@ -1,0 +1,24 @@
+<app-card width="340" class="centerHV">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="title">Detalhes {{ name }}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <app-button
+        name="btnVoltar"
+        text="Voltar"
+        [disabled]="false"
+        (click)="btnBack()"
+        color="cinza"
+      ></app-button>
+    </div>
+  </div>
+</app-card>

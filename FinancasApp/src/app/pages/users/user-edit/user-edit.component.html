@@ -1,0 +1,85 @@
+<form [formGroup]="updateForm" (ngSubmit)="updateUser(updateForm.value)">
+  <app-edit-entity
+    name="Usuário"
+    (btnBackClick)="btnBack()"
+    (btnSaveClick)="updateUser(updateForm.value)"
+  >
+    <div class="row">
+      <div class="col-md-12">
+        <label>Nome</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-input
+          name="txtNome"
+          placeholder="Nome Completo"
+          icon="fa-user"
+          [formGroup]="updateForm"
+          formControlName="name"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-input
+          name="txtEmail"
+          placeholder="Email"
+          icon="fa-at"
+          [formGroup]="updateForm"
+          formControlName="email"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Senha</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-input
+          name="txtSenha"
+          type="password"
+          value=""
+          placeholder="Senha (mínimo de 8 caracteres)"
+          icon="fa-key"
+          [formGroup]="updateForm"
+          formControlName="password"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div
+          class="error"
+          style="text-align: center;"
+          *ngIf="errorMessage.length > 0"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <app-button
+          name="btnSalvar"
+          type="submit"
+          text="Salvar"
+          [disabled]="!updateForm.valid"
+          color="vermelho"
+        ></app-button>
+      </div>
+    </div>
+  </app-edit-entity>
+</form>

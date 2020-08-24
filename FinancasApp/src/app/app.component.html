@@ -1,0 +1,10 @@
+<div class="container">
+  <app-loading [fullscreen]="true"></app-loading>
+  <div
+    *ngIf="user"
+    style="margin-top: 0; height: 50px; background-color: brown;"
+  >
+    HEADER
+  </div>
+  <router-outlet></router-outlet>
+</div>

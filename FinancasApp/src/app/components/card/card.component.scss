@@ -1,0 +1,12 @@
+.card-component {
+  background-color: var(--branco);
+  border: 2px solid var(--cinzaMedio);
+  width: 100%;
+  border-radius: 6px;
+  margin: 4px 0;
+  outline: none;
+  padding: 8px 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 4px 0 var(--cinzaMedio);
+  min-height: 80px;
+}

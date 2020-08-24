@@ -1,0 +1,14 @@
+<div
+  [ngClass]="{
+    loading: true,
+    'loading-component': !fullscreen,
+    'loading-fullscreen': fullscreen
+  }"
+  *ngIf="show | async"
+>
+  <img
+    class="loading-img"
+    src="assets/images/loading-blue.gif"
+    alt="Loading..."
+  />
+</div>

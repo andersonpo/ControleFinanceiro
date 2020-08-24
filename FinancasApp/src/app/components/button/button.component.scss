@@ -1,0 +1,118 @@
+.button-component {
+  border-radius: 6px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  margin: 4px auto;
+  margin-right: 4px;
+  border: 1px solid var(--cinzaEscuro);
+  background-color: var(--branco);
+  color: var(--preto);
+  outline: none;
+}
+
+.button-component-padding {
+  padding: 8px 16px;
+}
+
+.button-component-icon-left {
+  position: relative;
+  top: 2px;
+  left: -2px;
+}
+
+.button-component-icon-right {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.button-component:not(:disabled) {
+  cursor: pointer;
+}
+
+.button-component:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-component:hover {
+  background-color: var(--cinzaEscuro);
+  color: var(--branco);
+  border: 1px solid var(--preto);
+}
+
+.button-preto {
+  background-color: var(--preto);
+  color: var(--branco);
+  border: 1px solid var(--cinzaMedio);
+  
+  &:hover {
+    background-color: var(--cinzaMedio);
+    color: var(--preto);
+    border: 1px solid var(--cinzaEscuro);
+  }
+}
+
+.button-cinza {
+  background-color: var(--cinzaEscuro);
+  color: var(--branco);
+  border: 1px solid var(--cinzaMedio);
+  
+  &:hover {
+    background-color: var(--cinzaMedio);
+    color: var(--preto);
+    border: 1px solid var(--cinzaEscuro);
+  }
+}
+
+.button-azul {
+  background-color: var(--azulEscuro);
+  color: var(--branco);
+  border: 1px solid var(--azulMedio);
+  
+  &:hover {
+    background-color: var(--azulMedio);
+    color: var(--preto);
+    border: 1px solid var(--azulEscuro);
+  }
+}
+
+.button-verde {
+  background-color: var(--verdeEscuro);
+  color: var(--branco);
+  border: 1px solid var(--verdeMedio);
+  
+  &:hover {
+    background-color: var(--verdeMedio);
+    color: var(--preto);
+    border: 1px solid var(--verdeEscuro);
+  }
+}
+
+.button-vermelho {
+  background-color: var(--vermelhoEscuro);
+  color: var(--branco);
+  border: 1px solid var(--vermelhoMedio);
+  
+  &:hover {
+    background-color: var(--vermelhoMedio);
+    color: var(--preto);
+    border: 1px solid var(--vermelhoEscuro);
+  }
+}
+
+
+.button-amarelo {
+  background-color: var(--amareloEscuro);
+  color: var(--branco);
+  border: 1px solid var(--amareloMedio);
+  
+  &:hover {
+    background-color: var(--amareloMedio);
+    color: var(--preto);
+    border: 1px solid var(--amareloEscuro);
+  }
+}

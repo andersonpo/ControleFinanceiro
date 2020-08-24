@@ -1,0 +1,38 @@
+<app-card width="500" class="centerHV">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="title">Confirma a exclusão {{ name }} ?</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <app-button
+        name="btnConfirmar"
+        text="SIM"
+        [disabled]="false"
+        (click)="btnConfirm()"
+        color="vermelho"
+        icon="fa-check"
+        iconColor=""
+      ></app-button>
+    </div>
+    <div class="col-md-6">
+      <app-button
+        name="btnCancel"
+        text="NÃO"
+        [disabled]="false"
+        (click)="btnCancel()"
+        color="verde"
+        icon="fa-ban"
+        iconColor=""
+      ></app-button>
+    </div>
+  </div>
+</app-card>

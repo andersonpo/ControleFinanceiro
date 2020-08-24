@@ -1,0 +1,417 @@
+<app-input
+  name="input1"
+  placeholder="sem icone"
+  icon=""
+  [showIconRight]="false"
+  value="sem icone  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+></app-input>
+<app-input
+  name="input3"
+  placeholder="icone direita"
+  icon="fa-user"
+  [showIconRight]="true"
+  value="icone direita kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+></app-input>
+<app-input
+  name="input2"
+  placeholder="icone esquerda"
+  icon="fa-user"
+  [showIconRight]="false"
+  value="icone esquerda  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+></app-input>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-6">
+    NORMAL
+    <app-button
+      name="btn1"
+      text="Enviar 1"
+      [disabled]="false"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn2"
+      text="Enviar 2"
+      [disabled]="false"
+      color="azul"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn3"
+      text="Enviar 3"
+      [disabled]="false"
+      color="vermelho"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn4"
+      text="Enviar 4"
+      [disabled]="false"
+      color="verde"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn5"
+      text="Enviar 5"
+      [disabled]="false"
+      color="amarelo"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn6"
+      text="Enviar 6"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn7"
+      text="Enviar 7"
+      [disabled]="false"
+      color="preto"
+      (click)="btnClick($event)"
+    ></app-button>
+  </div>
+  <div class="col-md-6">
+    DISABLED
+    <app-button
+      name="btn1"
+      text="Enviar 1"
+      [disabled]="true"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn2"
+      text="Enviar 2"
+      [disabled]="true"
+      color="azul"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn3"
+      text="Enviar 3"
+      [disabled]="true"
+      color="vermelho"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn4"
+      text="Enviar 4"
+      [disabled]="true"
+      color="verde"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn5"
+      text="Enviar 5"
+      [disabled]="true"
+      color="amarelo"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn6"
+      text="Enviar 6"
+      [disabled]="true"
+      color="cinza"
+      (click)="btnClick($event)"
+    ></app-button>
+    <app-button
+      name="btn7"
+      text="Enviar 7"
+      [disabled]="true"
+      color="preto"
+      (click)="btnClick($event)"
+    ></app-button>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <div class="col-md-4">
+    ICON
+    <app-button
+      name="btn1"
+      text="Enviar 1"
+      [disabled]="false"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn2"
+      text="Enviar 2"
+      [disabled]="false"
+      color="azul"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn3"
+      text="Enviar 3"
+      [disabled]="false"
+      color="vermelho"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn4"
+      text="Enviar 4"
+      [disabled]="false"
+      color="verde"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn5"
+      text="Enviar 5"
+      [disabled]="false"
+      color="amarelo"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn6"
+      text="Enviar 6"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      iconColor="#FFF"
+    ></app-button>
+    <app-button
+      name="btn7"
+      text="Enviar 7"
+      [disabled]="false"
+      color="preto"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      iconColor="#FFF"
+    ></app-button>
+  </div>
+
+  <div class="col-md-4">
+    ICON RIGHT
+    <app-button
+      name="btn1"
+      text="Enviar 1"
+      [disabled]="false"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+    ></app-button>
+    <app-button
+      name="btn2"
+      text="Enviar 2"
+      [disabled]="false"
+      color="azul"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+    ></app-button>
+    <app-button
+      name="btn3"
+      text="Enviar 3"
+      [disabled]="false"
+      color="vermelho"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+    ></app-button>
+    <app-button
+      name="btn4"
+      text="Enviar 4"
+      [disabled]="false"
+      color="verde"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+    ></app-button>
+    <app-button
+      name="btn5"
+      text="Enviar 5"
+      [disabled]="false"
+      color="amarelo"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+    ></app-button>
+    <app-button
+      name="btn6"
+      text="Enviar 6"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+      iconColor="#FFF"
+    ></app-button>
+    <app-button
+      name="btn7"
+      text="Enviar 7"
+      [disabled]="false"
+      color="preto"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      [showIconRight]="true"
+      iconColor="#FFF"
+    ></app-button>
+  </div>
+
+  <div class="col-md-4">
+    ICON ONLY
+    <app-button
+      name="btn1"
+      [disabled]="false"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn2"
+      [disabled]="false"
+      color="azul"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn3"
+      [disabled]="false"
+      color="vermelho"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn4"
+      [disabled]="false"
+      color="verde"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn5"
+      [disabled]="false"
+      color="amarelo"
+      (click)="btnClick($event)"
+      icon="fa-user"
+    ></app-button>
+    <app-button
+      name="btn6"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      iconColor="#FFF"
+    ></app-button>
+    <app-button
+      name="btn7"
+      [disabled]="false"
+      color="preto"
+      (click)="btnClick($event)"
+      icon="fa-user"
+      iconColor="#FFF"
+    ></app-button>
+  </div>
+</div>
+<hr />
+<app-select
+  name="select1"
+  placeholder="Selecione 1 item"
+  [items]="itemsSelect"
+  [selectedItem]="itemSelected"
+  (onSelected)="selectedItem($event)"
+></app-select>
+<hr />
+<app-card name="card1">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+    nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+    pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+    turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+    urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+    ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+    Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+    sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+    efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+    interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+    libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+    nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+    finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
+    fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
+    facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
+    luctus convallis sapien in, elementum egestas sem. Proin semper magna at
+    nulla ullamcorper, quis pharetra enim ornare. Mauris dapibus, odio a pretium
+    lacinia, quam turpis pharetra lorem, dignissim aliquet est enim et sem.
+  </p>
+</app-card>
+<app-card name="card1" [width]="400" [height]="200">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+    nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+    pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+    turpis eu ullamcorper. Donec rhoncus commodo tempus.
+  </p>
+</app-card>
+<app-card name="card1" [width]="600" [height]="400">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+    nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+    pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+    turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+    urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+    ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+    Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+    sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+    efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+    interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+    libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+    nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+    finibus volutpat mi non consectetur.
+  </p>
+</app-card>
+<hr />
+<app-button
+  name="btnModal"
+  text="Abrir Modal"
+  [disabled]="false"
+  color="vermelho"
+  (click)="btnAbrirModal($event)"
+></app-button>
+<app-modal
+  name="modal1"
+  [width]="800"
+  [height]="470"
+  [open]="modalOpen"
+  (onClose)="onCloseModal()"
+>
+  <span style="font-size: 22px; font-weight: bold;">Titulo Modal</span>
+  <hr />
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+    nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+    pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+    turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+    urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+    ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+    Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+    sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+    efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+    interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+    libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+    nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+    finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
+    fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
+    facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
+    luctus convallis sapien in, elementum egestas sem.
+  </p>
+  <hr />
+  <app-button
+    style="position: absolute; right: 10px; bottom: 10px;"
+    name="btnModalFechar"
+    text="Fechar"
+    [disabled]="false"
+    color="vermelho"
+    (click)="btnFecharModal($event)"
+  ></app-button>
+</app-modal>
+<hr />

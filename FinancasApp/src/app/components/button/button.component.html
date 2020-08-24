@@ -1,0 +1,22 @@
+<button
+  type="{{ type }}"
+  class="button-component"
+  [ngClass]="getClass()"
+  id="{{ name }}"
+  [disabled]="disabled"
+  (click)="buttonClick()"
+>
+  <i
+    *ngIf="icon.length > 0 && !showIconRight"
+    class="button-component-icon-left fas fa-lg"
+    [ngClass]="icon"
+    [style.color]="iconColor"
+  ></i>
+  {{ text }}
+  <i
+    *ngIf="icon.length > 0 && showIconRight"
+    class="button-component-icon-right fas fa-lg"
+    [ngClass]="icon"
+    [style.color]="iconColor"
+  ></i>
+</button>

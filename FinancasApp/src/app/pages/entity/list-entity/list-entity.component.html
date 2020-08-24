@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-md-12 center">
+    <span class="title">Lista de {{ name }}</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+    <app-button
+      name="btnCreate"
+      text="Novo"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnCreate()"
+      icon="fa-plus-circle"
+      iconColor="#fff"
+    ></app-button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">&nbsp;</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table *ngIf="table">
+      <thead>
+        <tr>
+          <th *ngIf="table?.showLineNumber" [style.width.px]="60">#</th>
+          <th
+            *ngFor="let col of table?.columns"
+            [style.display]="col?.visible ? 'table-cell' : 'none'"
+            [style.width.px]="col?.size"
+          >
+            {{ col.name }}
+          </th>
+          <th
+            *ngIf="table?.actions"
+            [style.width.px]="table?.actions.size"
+          ></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of getRowsPaginated(); let i = index">
+          <td *ngIf="table?.showLineNumber">
+            {{ page <= 1 ? i + 1 : pageSize * (page - 1) + (i + 1) }}
+          </td>
+          <td
+            [style.display]="rowValue?.visible ? 'table-cell' : 'none'"
+            *ngFor="let rowValue of row?.values"
+          >
+            {{ rowValue?.value }}
+          </td>
+          <td *ngIf="table?.actions?.buttons">
+            <div
+              class="col-md-2"
+              style="
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 auto;
+              "
+            >
+              <app-button
+                *ngFor="let act of table?.actions?.buttons"
+                name="btn{{ act?.text }}"
+                text="{{ act?.text }}"
+                [disabled]="false"
+                color="{{ act?.color || 'azul' }}"
+                (click)="actClick(act?.text, (row?.values)[0].value)"
+                style="margin-right: 4px;"
+                [removePadding]="true"
+                icon="{{ act?.icon }}"
+                iconColor="{{ act?.iconColor }}"
+              ></app-button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="table.footer">
+        <tr>
+          <td
+            *ngFor="let footer of table?.footer"
+            [attr.colspan]="footer?.colspan"
+          >
+            {{ footer?.pretext }} {{ footer?.value }}
+            {{ footer?.postext }}
+          </td>
+        </tr>
+        <tr>
+          <td [attr.colspan]="colspanPaginated">
+            <div
+              class="col-md-2"
+              style="
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <app-button
+                name="btnFirst"
+                text="Primeira"
+                [disabled]="page <= 1"
+                color="preto"
+                style="margin-right: 4px;"
+                [removePadding]="true"
+                (click)="btnFirst()"
+                icon="fa-fast-backward"
+                iconColor="#fff"
+              ></app-button>
+              <app-button
+                name="btnPrevious"
+                text="Anterior"
+                [disabled]="page < 2"
+                color="branco"
+                style="margin-right: 4px;"
+                [removePadding]="true"
+                (click)="btnPrevious()"
+                icon="fa-step-backward"
+                iconColor="#000"
+              ></app-button>
+              <app-button
+                name="btnNext"
+                text="Próxima"
+                [disabled]="page >= totalPages"
+                color="branco"
+                style="margin-right: 4px;"
+                [removePadding]="true"
+                (click)="btnNext()"
+                icon="fa-step-forward"
+                iconColor="#000"
+                [showIconRight]="true"
+              ></app-button>
+              <app-button
+                name="btnLast"
+                text="Última"
+                [disabled]="page >= totalPages"
+                color="preto"
+                style="margin-right: 4px;"
+                [removePadding]="true"
+                (click)="btnLast()"
+                icon="fa-fast-forward"
+                iconColor="#fff"
+                [showIconRight]="true"
+              ></app-button>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
