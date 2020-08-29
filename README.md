@@ -42,6 +42,5 @@
 ### Pendências
 
 - [BackEnd] Busca com paginação (hoje está no FrontEnd)
-- [FrontEnd] Pages Entity, alguns valores fixos como tamanho do card, alterar para o parent enviar, e ajustar layout para entidades maiores
 
 ---

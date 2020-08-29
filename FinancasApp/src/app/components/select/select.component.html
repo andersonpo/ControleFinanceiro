@@ -13,7 +13,11 @@
   [ngClass]="getClass()"
   value="{{ selectedItem?.text }}"
 />
-<div class="select-component-items" [style.display]="getDisplayItems()">
+<div
+  class="select-component-items"
+  [style.width.px]="widthItems"
+  [style.display]="getDisplayItems()"
+>
   <ul>
     <li *ngFor="let item of items" (click)="handleItemClick(item)">
       {{ item.text }}

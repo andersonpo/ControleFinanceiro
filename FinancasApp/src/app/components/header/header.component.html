@@ -1,0 +1,21 @@
+<div *ngIf="user" class="header-component">
+  <div class="title">
+    <label class="text" (click)="handleTitleClick()">{{ title }}</label>
+  </div>
+  <div class="username" (click)="handleUserClick()">
+    <img class="photo" [src]="profileImageUrl" alt="Perfil" />
+    <label class="text">{{ user?.Name }}</label>
+    <i class="icon fas fa-lg" [ngClass]="getIconName()"></i>
+    <div class="username-items" [style.display]="getDisplayUserItems()">
+      <ul>
+        <li
+          *ngFor="let item of userItems"
+          (click)="handleUserItemClick(item)"
+          [ngClass]="item?.separator ? 'separator' : ''"
+        >
+          {{ item.text }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

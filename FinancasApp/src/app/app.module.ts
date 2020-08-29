@@ -13,6 +13,7 @@ import { TestPageComponent } from './pages/test-page/test-page.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
+import { ResizeService } from './services/resize.service';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { UserDeleteComponent } from './pages/users/user-delete/user-delete.component';
@@ -49,6 +50,7 @@ import { UserCreateComponent } from './pages/users/user-create/user-create.compo
       useClass: HttpInterceptorService,
       multi: true,
     },
+    ResizeService,
   ],
   bootstrap: [AppComponent],
 })

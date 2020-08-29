@@ -1,10 +1,11 @@
 <div class="container">
   <app-loading [fullscreen]="true"></app-loading>
-  <div
-    *ngIf="user"
-    style="margin-top: 0; height: 50px; background-color: brown;"
-  >
-    HEADER
-  </div>
+  <app-header
+    title="Controle Financeiro"
+    [user]="user"
+    [userItems]="userItems"
+    (onUserItemClick)="onHeaderUserItemClick($event)"
+    (onTitleClick)="onTitleClick()"
+  ></app-header>
   <router-outlet></router-outlet>
 </div>

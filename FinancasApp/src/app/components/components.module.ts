@@ -7,6 +7,7 @@ import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoadingComponent } from './loading/loading.component';
     CardComponent,
     ModalComponent,
     LoadingComponent,
+    HeaderComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
   exports: [
@@ -25,6 +27,7 @@ import { LoadingComponent } from './loading/loading.component';
     CardComponent,
     ModalComponent,
     LoadingComponent,
+    HeaderComponent,
   ],
 })
 export class ComponentsModule {}

@@ -9,7 +9,8 @@
 }
 
 .select-component-items {
-  width: 100%;
+  position: absolute;
+  background-color: var(--branco);
   cursor: pointer;
   min-height: 105px; // 3 items
   max-height: 320px; // 10 items

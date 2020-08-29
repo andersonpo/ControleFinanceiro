@@ -64,7 +64,21 @@ export class UserEditComponent implements OnInit {
   }
 
   btnBack() {
-    this.router.navigate(['/user']);
+    const previousUrl = sessionStorage.getItem('url');
+    if (previousUrl?.length > 0) {
+      const objParams = JSON.parse(sessionStorage.getItem('urlParams'));
+      sessionStorage.removeItem('url');
+      sessionStorage.removeItem('urlParams');
+
+      console.log('previousUrl', previousUrl, 'objParams', objParams);
+      if (objParams != null && objParams != undefined) {
+        this.router.navigate([previousUrl, objParams]);
+      } else {
+        this.router.navigate([previousUrl]);
+      }
+    } else {
+      this.router.navigate(['/user']);
+    }
   }
 
   updateUser(data) {

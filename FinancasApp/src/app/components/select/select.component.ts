@@ -7,6 +7,7 @@ import {
   ElementRef,
   HostListener,
 } from '@angular/core';
+import { ResizeService } from 'src/app/services/resize.service';
 
 @Component({
   selector: 'app-select',
@@ -20,10 +21,25 @@ export class SelectComponent implements OnInit {
   @Input() selectedItem: SelectItem = null;
   @Output() onSelected = new EventEmitter<SelectItem>();
   open: boolean = false;
+  widthItems: number = 300;
 
-  constructor(private eRef: ElementRef) {}
+  constructor(private eRef: ElementRef, private resizeService: ResizeService) {
+    this.resizeService.width.subscribe((value) => {
+      this.updateWidth();
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateWidth();
+  }
+
+  ngOnDestroy() {
+    this.resizeService.width.unsubscribe();
+  }
+
+  updateWidth() {
+    this.widthItems = this.eRef.nativeElement.offsetWidth;
+  }
 
   getClass() {
     let result = {};
