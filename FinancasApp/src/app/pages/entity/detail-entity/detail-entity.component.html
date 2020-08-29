@@ -1,24 +1,25 @@
-<app-card width="340" class="centerHV">
-  <div class="row">
-    <div class="col-md-12">
-      <span class="title">Detalhes {{ name }}</span>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <span class="title">Detalhes {{ name }}</span>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-md-12">
+<div class="row">
+  <div class="col-md-12">
+    <app-card>
       <ng-content></ng-content>
-    </div>
+    </app-card>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <app-button
-        name="btnVoltar"
-        text="Voltar"
-        [disabled]="false"
-        (click)="btnBack()"
-        color="cinza"
-      ></app-button>
-    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-lg-2">
+    <app-button
+      name="btnVoltar"
+      text="Voltar"
+      [disabled]="false"
+      (click)="btnBack()"
+      color="cinza"
+    ></app-button>
   </div>
-</app-card>
+</div>

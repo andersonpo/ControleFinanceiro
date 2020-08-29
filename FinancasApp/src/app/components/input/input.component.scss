@@ -43,3 +43,8 @@
 .input-error {
   border-color: var(--vermelhoEscuro);
 }
+
+.input-component:disabled {
+  background-color: var(--cinzaClaro);
+  cursor: not-allowed;
+}

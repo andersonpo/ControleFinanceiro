@@ -3,8 +3,35 @@
   (btnConfirmClick)="btnConfirm()"
   (btnCancelClick)="btnCancel()"
 >
-  Nome: {{ user?.Name }}
-  <br />
-  Email: {{ user?.Email }}
-  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <label>Nome</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-input
+        name="inputName"
+        [disabled]="true"
+        value="{{ user?.Name }}"
+      ></app-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Email</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-input
+        name="inputEmail"
+        [disabled]="true"
+        value="{{ user?.Email }}"
+      ></app-input>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
 </app-delete-entity>

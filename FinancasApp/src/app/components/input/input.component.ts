@@ -31,6 +31,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() formGroup: FormGroup;
   @Input() type: string = 'text';
   @Input() value: string = '';
+  @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
   @Input() icon: string = '';
   @Input() showIconRight: boolean = false;
@@ -39,7 +40,6 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Output() onValueChange = new EventEmitter();
 
   // ControlValueAccessor
-  private disabled: boolean;
   private onChange: Function;
   private onTouched: Function;
 

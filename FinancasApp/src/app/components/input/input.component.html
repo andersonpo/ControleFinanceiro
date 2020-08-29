@@ -3,6 +3,7 @@
   class="input-component"
   id="{{ name }}"
   type="{{ type }}"
+  [disabled]="disabled"
   placeholder="{{ placeholder }}"
   value="{{ value }}"
   (keydown.enter)="onKeyEnter($event)"
