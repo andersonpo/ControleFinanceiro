@@ -6,6 +6,7 @@ import IUser from '../interfaces/IUser';
 import IResponse from '../interfaces/IResponse';
 import DataBase from './database-service';
 import Auth from '../middlewares/auth';
+import fs from 'fs/promises';
 
 class UserService {
   private database = new DataBase();
@@ -26,7 +27,7 @@ class UserService {
   };
 
   getUserByEmail = async (email: string): Promise<IUser> => {
-    const user: IUser = { Id: '', Name: '', Email: '', Password: '' };
+    const user: IUser = { Id: '', Name: '', Email: '' };
 
     const result = await this.database.getSingle(
       'SELECT * FROM user u WHERE u.Email = ?',
@@ -37,6 +38,7 @@ class UserService {
       user.Name = result.name;
       user.Email = result.email;
       user.Password = result.password;
+      user.Photo = result.photo;
     }
 
     if (user.Id?.length > 0) {
@@ -47,7 +49,7 @@ class UserService {
   };
 
   getUserById = async (id: string): Promise<IUser> => {
-    const user: IUser = { Id: '', Name: '', Email: '', Password: '' };
+    const user: IUser = { Id: '', Name: '', Email: '' };
     const result = await this.database.getSingle(
       'SELECT * FROM user u WHERE u.id = ?',
       id
@@ -58,6 +60,7 @@ class UserService {
       user.Name = result.name;
       user.Email = result.email;
       user.Password = result.password;
+      user.Photo = result.photo;
     }
 
     if (user.Id?.length > 0) {
@@ -189,6 +192,43 @@ class UserService {
 
     const response: IResponse = {
       message: 'Usuário excluido com sucesso',
+    };
+
+    return res.status(200).send(response);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  uploadPhoto = async (req: any, res: Response): Promise<IResponse> => {
+    const id = req.params.id as string;
+    const photo = req.file;
+
+    if (photo === undefined || photo === null) {
+      return res.status(400).send({ message: 'Foto não informada' });
+    }
+
+    // read in base64
+    const photoBase64 = await fs.readFile(photo.path, { encoding: 'base64' });
+
+    // delete file
+    await fs.unlink(photo.path);
+
+    let user = await this.getUserById(id);
+
+    if (user === null || user === undefined) {
+      return res.status(404).send({ message: 'Usuário não encontrado' });
+    }
+
+    const query = 'UPDATE user SET photo = ? WHERE id = ?';
+    const result = await this.database.execute(query, photoBase64, user.Id);
+
+    if (result.changes <= 0) {
+      return res.status(500).send({ message: 'Nenhum registro atualizado' });
+    }
+
+    user = await this.getUserById(id);
+    const response: IResponse = {
+      message: 'Foto do usuário atualizada com sucesso',
+      result: user,
     };
 
     return res.status(200).send(response);

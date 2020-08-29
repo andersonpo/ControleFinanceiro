@@ -15,16 +15,18 @@ npm i -D @types/body-parser
 npm i -D @types/bcrypt
 npm i -D @types/jsonwebtoken
 npm i -D nodemon
+npm i -D @types/multer
 
 # Dependencias Produção
 
-npm i -S express
-npm i -S body-parser
-npm i -S bcrypt
-npm i -S jsonwebtoken
-npm i -S sqlite
-npm i -S uuid
-npm i -S morgan
+npm i -S express => biblioteca web
+npm i -S body-parser => receber dados atraves de json
+npm i -S bcrypt => Cryptografia
+npm i -S jsonwebtoken => JWT Token
+npm i -S sqlite => banco de dados
+npm i -S uuid => guid
+npm i -S morgan => log
+npm i -S multer => receber dados atraves de multipart/form-data
 
 # Arquivos de configuração
 
