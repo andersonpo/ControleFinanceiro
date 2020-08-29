@@ -1,0 +1,24 @@
+{
+  "name": "controlefinanceiro",
+  "version": "1.0.0",
+  "description": "- NodeJS\r - Express\r - JWT\r - SQLite3",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others --kill-others-on-fail --prefix \"{name}\" --names \"[BackEnd],[FrontEnd]\" \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd FinancasApi && npm install && npm run watch",
+    "start:frontend": "cd FinancasApp && npm install && npm run start:open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersonpo/ControleFinanceiro.git"
+  },
+  "author": "Anderson Pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andersonpo/ControleFinanceiro/issues"
+  },
+  "homepage": "https://github.com/andersonpo/ControleFinanceiro#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
