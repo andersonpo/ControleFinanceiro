@@ -42,5 +42,6 @@
 ### Pendências
 
 - [BackEnd] Busca com paginação (hoje está no FrontEnd)
+- [FrontEnd] Buscar "data:image/jpg;base64" trocar para ser dinamico (2 lugares => header e user-detail)
 
 ---

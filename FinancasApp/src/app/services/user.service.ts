@@ -51,4 +51,11 @@ export class UserService {
       this.httpOptions
     );
   }
+
+  uploadPhoto(id: string, photo): Observable<any> {
+    return this.httpClient.post(
+      `${environment.urlServices}/users/${id}/photo`,
+      photo
+    );
+  }
 }

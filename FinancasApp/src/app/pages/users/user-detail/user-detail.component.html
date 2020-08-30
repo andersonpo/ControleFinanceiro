@@ -28,6 +28,20 @@
     </div>
   </div>
   <div class="row">
-    &nbsp;
+    <div class="col-md-12">
+      <label>Foto</label>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <img
+        src="data:image/jpg;base64,{{ user?.Photo }}"
+        alt="foto"
+        width="300"
+        height="auto"
+      />
+      <!-- img src="data:[<media type>][;charset=<character set>][;base64],<data>" -->
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
 </app-detail-entity>

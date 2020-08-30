@@ -19,6 +19,7 @@ import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { UserDeleteComponent } from './pages/users/user-delete/user-delete.component';
 import { UserDetailComponent } from './pages/users/user-detail/user-detail.component';
 import { UserCreateComponent } from './pages/users/user-create/user-create.component';
+import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-photo-upload.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserCreateComponent } from './pages/users/user-create/user-create.compo
     UserDeleteComponent,
     UserDetailComponent,
     UserCreateComponent,
+    UserPhotoUploadComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import {
   Output,
   ElementRef,
   HostListener,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { IUser } from 'src/app/interfaces/iuser';
 
@@ -14,7 +16,7 @@ import { IUser } from 'src/app/interfaces/iuser';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
   @Input() title: string = 'Nome do Site';
   @Input() user: IUser = null;
   @Input() userItems: Array<UserItem> = [];
@@ -25,9 +27,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private eRef: ElementRef) {}
 
-  ngOnInit(): void {
-    if (this.user?.ImageUrl?.length > 0) {
-      this.profileImageUrl = this.user.ImageUrl;
+  ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.user?.Photo?.length > 0) {
+      console.log('user photo header');
+      this.profileImageUrl = 'data:image/jpg;base64,' + this.user.Photo;
+      //data:[<media type>][;charset=<character set>][;base64],<data>
     }
   }
 

@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { IUser } from './interfaces/iuser';
 import { UserItem } from './components/header/header.component';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,16 @@ import { UserItem } from './components/header/header.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  userToken: IUser = null;
   user: IUser = null;
   userItems: Array<UserItem>;
   title = 'FinancasApp';
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.userItems = new Array<UserItem>();
     this.userItems.push({ text: 'Meus Dados', value: 'perfil' });
     this.userItems.push({ text: '', value: '', separator: true });
@@ -23,9 +29,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
-      console.log('app rota', event);
       if (event instanceof NavigationEnd) {
-        this.user = this.authService.getUser();
+        this.userToken = this.authService.getUser();
+        this.userService.findById(this.userToken.Id).subscribe((value) => {
+          this.user = value.result;
+        });
       }
     });
   }

@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit {
       ],
       rows: rows,
       actions: {
-        size: 340,
+        size: 420,
         buttons: [
           {
             text: 'Detalhes',
@@ -62,6 +62,12 @@ export class UserListComponent implements OnInit {
             text: 'Editar',
             color: 'azul',
             icon: 'fa-edit',
+            iconColor: '#FFF',
+          },
+          {
+            text: 'Foto',
+            color: 'azul',
+            icon: 'fa-image',
             iconColor: '#FFF',
           },
           {
@@ -94,6 +100,9 @@ export class UserListComponent implements OnInit {
         break;
       case 'Editar':
         this.router.navigate(['user/edit', { id: data.value }]);
+        break;
+      case 'Foto':
+        this.router.navigate(['user/photo', { id: data.value }]);
         break;
       case 'Excluir':
         this.router.navigate(['user/delete', { id: data.value }]);

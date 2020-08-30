@@ -10,6 +10,7 @@ import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { UserDeleteComponent } from './pages/users/user-delete/user-delete.component';
 import { UserDetailComponent } from './pages/users/user-detail/user-detail.component';
 import { UserCreateComponent } from './pages/users/user-create/user-create.component';
+import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-photo-upload.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'edit', component: UserEditComponent },
       { path: 'delete', component: UserDeleteComponent },
       { path: 'details', component: UserDetailComponent },
+      { path: 'photo', component: UserPhotoUploadComponent },
     ],
   },
   { path: '404', component: NotFoundComponent },

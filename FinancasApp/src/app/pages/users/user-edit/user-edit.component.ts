@@ -70,7 +70,6 @@ export class UserEditComponent implements OnInit {
       sessionStorage.removeItem('url');
       sessionStorage.removeItem('urlParams');
 
-      console.log('previousUrl', previousUrl, 'objParams', objParams);
       if (objParams != null && objParams != undefined) {
         this.router.navigate([previousUrl, objParams]);
       } else {
