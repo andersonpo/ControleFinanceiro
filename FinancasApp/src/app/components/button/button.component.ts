@@ -6,22 +6,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
-  @Input() text: string = '';
-  @Input() type: string = 'button';
-  @Input() name: string = '';
-  @Input() disabled: boolean = false;
-  @Input() color: string = '';
-  @Input() icon: string = '';
-  @Input() iconColor: string = '';
-  @Input() showIconRight: boolean = false;
-  @Input() removePadding: boolean = false;
-  @Output() onClick = new EventEmitter();
+  @Input() text = '';
+  @Input() type = 'button';
+  @Input() name = '';
+  @Input() disabled = false;
+  @Input() color = '';
+  @Input() icon = '';
+  @Input() iconColor = '';
+  @Input() showIconRight = false;
+  @Input() removePadding = false;
+  @Output() actionClick = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  getClass() {
+  getClass(): object {
     const colorLower = this.color ? this.color.toLocaleLowerCase() : '';
     const result = {
       'button-preto': colorLower === 'preto',
@@ -36,7 +36,7 @@ export class ButtonComponent implements OnInit {
     return result;
   }
 
-  buttonClick() {
-    this.onClick.emit();
+  buttonClick(): void {
+    this.actionClick.emit();
   }
 }

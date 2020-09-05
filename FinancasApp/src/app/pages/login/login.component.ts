@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login(formValue: any) {
+  login(formValue: any): void {
     this.authService.login(formValue.email, formValue.password).subscribe(
       () => {
         this.errorMessage = '';
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Usuário ou Senha inválidos';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }

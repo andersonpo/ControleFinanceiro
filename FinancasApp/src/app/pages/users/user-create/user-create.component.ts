@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserCreateComponent implements OnInit {
   createForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private router: Router,
@@ -34,11 +34,11 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  btnVoltar() {
+  btnVoltar(): void {
     this.router.navigate(['/user']);
   }
 
-  btnSalvar(formValue: any) {
+  btnSalvar(formValue: any): void {
     this.userService.create(formValue).subscribe(
       () => {
         this.errorMessage = '';
@@ -46,7 +46,7 @@ export class UserCreateComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Verifique os dados informados e tente novamente.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }

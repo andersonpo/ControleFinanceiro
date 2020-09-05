@@ -35,7 +35,8 @@
   <div class="row">
     <div class="col-md-12">
       <img
-        src="data:image/jpg;base64,{{ user?.Photo }}"
+        *ngIf="user?.Photo"
+        src="data:{{ user?.PhotoType }};base64,{{ user?.Photo }}"
         alt="foto"
         width="300"
         height="auto"

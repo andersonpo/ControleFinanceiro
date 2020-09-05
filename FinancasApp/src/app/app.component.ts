@@ -38,11 +38,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onTitleClick() {
+  onTitleClick(): void {
     this.router.navigate(['/']);
   }
 
-  onHeaderUserItemClick(item: UserItem) {
+  onHeaderUserItemClick(item: UserItem): void {
     switch (item.value) {
       case 'logout':
         this.authService.clearSession();
@@ -57,16 +57,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  saveSessionUrl() {
+  saveSessionUrl(): void {
     const urlNow = this.router.url;
     let index = urlNow.indexOf(';');
     if (index > 0) {
-      let url = urlNow.substring(0, index);
+      const url = urlNow.substring(0, index);
       let restOfUrl = urlNow.substring(index + 1);
       index = restOfUrl.indexOf('=');
-      let paramName = restOfUrl.substring(0, index);
+      const paramName = restOfUrl.substring(0, index);
       restOfUrl = restOfUrl.substring(index + 1);
-      let paramValue = restOfUrl.substring(0);
+      const paramValue = restOfUrl.substring(0);
 
       const objParams = {};
       objParams[paramName] = paramValue;

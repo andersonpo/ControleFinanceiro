@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ElementRef,
   HostListener,
+  OnDestroy,
 } from '@angular/core';
 import { ResizeService } from 'src/app/services/resize.service';
 
@@ -14,14 +15,14 @@ import { ResizeService } from 'src/app/services/resize.service';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
 })
-export class SelectComponent implements OnInit {
-  @Input() name: string = '';
-  @Input() placeholder: string = '';
+export class SelectComponent implements OnInit, OnDestroy {
+  @Input() name = '';
+  @Input() placeholder = '';
   @Input() items: Array<SelectItem> = [];
   @Input() selectedItem: SelectItem = null;
-  @Output() onSelected = new EventEmitter<SelectItem>();
-  open: boolean = false;
-  widthItems: number = 300;
+  @Output() actionSelected = new EventEmitter<SelectItem>();
+  open = false;
+  widthItems = 300;
 
   constructor(private eRef: ElementRef, private resizeService: ResizeService) {
     this.resizeService.width.subscribe((value) => {
@@ -33,20 +34,15 @@ export class SelectComponent implements OnInit {
     this.updateWidth();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.resizeService.width.unsubscribe();
   }
 
-  updateWidth() {
+  updateWidth(): void {
     this.widthItems = this.eRef.nativeElement.offsetWidth;
   }
 
-  getClass() {
-    let result = {};
-    return result;
-  }
-
-  getDisplayItems() {
+  getDisplayItems(): string {
     if (this.open) {
       return 'block';
     } else {
@@ -54,16 +50,16 @@ export class SelectComponent implements OnInit {
     }
   }
 
-  getClassIcon() {
-    let result = {
+  getClassIcon(): object {
+    const result = {
       'fa-angle-down': !this.open,
       'fa-angle-up': this.open,
     };
     return result;
   }
 
-  getIconRemoveDisplay() {
-    if (this.selectedItem != null && this.selectedItem != undefined) {
+  getIconRemoveDisplay(): string {
+    if (this.selectedItem !== null && this.selectedItem !== undefined) {
       return 'block';
     } else {
       return 'none';
@@ -71,7 +67,7 @@ export class SelectComponent implements OnInit {
   }
 
   @HostListener('document:click', ['$event'])
-  handleClick(event: any) {
+  handleClick(event: any): void {
     const elementIconRemove = this.eRef.nativeElement.querySelector(
       '.select-icon-remove'
     );
@@ -80,14 +76,14 @@ export class SelectComponent implements OnInit {
     if (this.eRef.nativeElement.contains(event.target) && !clickRemoveItem) {
       this.open = !this.open;
     } else {
-      //clicou fora do componente
+      // clicou fora do componente
       this.open = false;
     }
   }
 
-  handleItemClick(item: SelectItem) {
+  handleItemClick(item: SelectItem): void {
     this.selectedItem = item;
-    this.onSelected.emit(item);
+    this.actionSelected.emit(item);
   }
 }
 

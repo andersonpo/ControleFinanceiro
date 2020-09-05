@@ -6,14 +6,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./create-entity.component.scss'],
 })
 export class CreateEntityComponent implements OnInit {
-  @Input() name: string = 'Entidade';
+  @Input() name = 'Entidade';
   @Output() btnBackClick = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  btnBack() {
+  btnBack(): void {
     this.btnBackClick.emit();
   }
 }

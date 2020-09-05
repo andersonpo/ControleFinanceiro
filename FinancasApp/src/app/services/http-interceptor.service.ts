@@ -47,7 +47,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     );
   }
 
-  updateToken(url: string) {
+  updateToken(url: string): void {
     const updateTokenXminutes = 10;
     const dateExpiration = this.authService.getTokenExpiration();
     const fakeExpiration = new Date(dateExpiration.getTime());

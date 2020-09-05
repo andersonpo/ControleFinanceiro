@@ -16,7 +16,7 @@ export class NotFoundComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-  goToHome() {
+  goToHome(): void {
     this.router.navigate(['/']);
   }
 }

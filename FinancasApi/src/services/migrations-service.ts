@@ -6,6 +6,7 @@ class MigrationsService {
 
   private createTables = async (): Promise<void> => {
     let query = '';
+    let exists = false;
 
     query = 'CREATE TABLE IF NOT EXISTS user (';
     query += ' id VARCHAR(100) NOT NULL';
@@ -17,11 +18,20 @@ class MigrationsService {
 
     await this.database.executeNonQuery(query);
 
-    query = 'select name from pragma_table_info(\'user\') where name = \'photo\'';
-    const exists = await this.database.getSingle(query);
+    query = 'select name from pragma_table_info("user") where name = "photo"';
+    exists = await this.database.getSingle(query);
 
     if (exists === null || exists === undefined) {
       query = 'ALTER TABLE user ADD COLUMN photo TEXT';
+      await this.database.executeNonQuery(query);
+    }
+
+    query =
+      'select name from pragma_table_info("user") where name = "photo_type"';
+    exists = await this.database.getSingle(query);
+
+    if (exists === null || exists === undefined) {
+      query = 'ALTER TABLE user ADD COLUMN photo_type VARCHAR(30)';
       await this.database.executeNonQuery(query);
     }
   };
@@ -44,14 +54,15 @@ class MigrationsService {
   };
 
   execute = async (): Promise<void> => {
+    const separator = '#'.repeat(80);
     // eslint-disable-next-line no-console
-    console.log('Migrations Started');
+    console.log(`${separator}\nMigrations Started`);
 
     await this.createTables();
     await this.populateTables();
 
     // eslint-disable-next-line no-console
-    console.log('Migrations End');
+    console.log(`${separator}\nMigrations End`);
   };
 }
 

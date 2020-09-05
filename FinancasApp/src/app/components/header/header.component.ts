@@ -17,13 +17,13 @@ import { IUser } from 'src/app/interfaces/iuser';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnChanges {
-  @Input() title: string = 'Nome do Site';
+  @Input() title = 'Nome do Site';
   @Input() user: IUser = null;
   @Input() userItems: Array<UserItem> = [];
-  @Output() onUserItemClick = new EventEmitter();
-  @Output() onTitleClick = new EventEmitter();
-  open: boolean = false;
-  profileImageUrl: string = '/assets/images/avatar.png';
+  @Output() actionUserItemClick = new EventEmitter();
+  @Output() actionTitleClick = new EventEmitter();
+  open = false;
+  profileImageUrl = '/assets/images/avatar.png';
 
   constructor(private eRef: ElementRef) {}
 
@@ -31,13 +31,11 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.user?.Photo?.length > 0) {
-      console.log('user photo header');
-      this.profileImageUrl = 'data:image/jpg;base64,' + this.user.Photo;
-      //data:[<media type>][;charset=<character set>][;base64],<data>
+      this.profileImageUrl = 'data:' + this.user.PhotoType + ';base64,' + this.user.Photo;
     }
   }
 
-  getIconName() {
+  getIconName(): string {
     if (this.open) {
       return 'fa-caret-up';
     } else {
@@ -45,7 +43,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     }
   }
 
-  getDisplayUserItems() {
+  getDisplayUserItems(): string {
     if (this.open) {
       return 'block';
     } else {
@@ -54,23 +52,23 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   @HostListener('document:click', ['$event'])
-  handleClick(event: any) {
+  handleClick(event: any): void {
     if (!this.eRef.nativeElement.contains(event.target)) {
-      //clicou fora do componente
+      // clicou fora do componente
       this.open = false;
     }
   }
 
-  handleUserClick() {
+  handleUserClick(): void {
     this.open = !this.open;
   }
 
-  handleUserItemClick(item: UserItem) {
-    this.onUserItemClick.emit(item);
+  handleUserItemClick(item: UserItem): void {
+    this.actionUserItemClick.emit(item);
   }
 
-  handleTitleClick() {
-    this.onTitleClick.emit();
+  handleTitleClick(): void {
+    this.actionTitleClick.emit();
   }
 }
 

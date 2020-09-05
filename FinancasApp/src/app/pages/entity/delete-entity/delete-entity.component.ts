@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./delete-entity.component.scss'],
 })
 export class DeleteEntityComponent implements OnInit {
-  @Input() name: string = '';
+  @Input() name = '';
   @Output() btnConfirmClick = new EventEmitter();
   @Output() btnCancelClick = new EventEmitter();
 
@@ -14,11 +14,11 @@ export class DeleteEntityComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  btnCancel() {
+  btnCancel(): void {
     this.btnCancelClick.emit();
   }
 
-  btnConfirm() {
+  btnConfirm(): void {
     this.btnConfirmClick.emit();
   }
 }

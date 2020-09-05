@@ -29,13 +29,14 @@
 
 ## API
 
-| Método | Url         | Descrição            |
-| ------ | ----------- | -------------------- |
-| GET    | /users      | Lista de Usuários    |
-| GET    | /users/{id} | Busca por id         |
-| POST   | /users      | Cria um novo usuário |
-| PUT    | /users/{id} | Atualiza o usuário   |
-| DELETE | /users/{id} | Exclui o usuário     |
+| Método | Url               | Descrição                  |
+| ------ | ----------------- | -------------------------- |
+| GET    | /users            | Lista de Usuários          |
+| GET    | /users/{id}       | Busca por id               |
+| POST   | /users            | Cria um novo usuário       |
+| POST   | /users/{id}/photo | Atualiza a foto do usuário |
+| PUT    | /users/{id}       | Atualiza o usuário         |
+| DELETE | /users/{id}       | Exclui o usuário           |
 
 ---
 

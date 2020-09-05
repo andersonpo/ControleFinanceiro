@@ -9,9 +9,9 @@ import { IUser } from 'src/app/interfaces/iuser';
   styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
-  id: string = '';
+  id = '';
   user: IUser = null;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private router: Router,
@@ -36,14 +36,14 @@ export class UserDetailComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao recuperar os dados do usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }
     );
   }
 
-  btnBack() {
+  btnBack(): void {
     this.router.navigate(['/user']);
   }
 }

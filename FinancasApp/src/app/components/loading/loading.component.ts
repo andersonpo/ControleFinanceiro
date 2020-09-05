@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class LoadingComponent implements OnInit {
   @Input() show: Subject<boolean> = this.loaderService.isLoading;
-  @Input() fullscreen: boolean = false;
+  @Input() fullscreen = false;
 
   constructor(private loaderService: LoaderService) {}
 

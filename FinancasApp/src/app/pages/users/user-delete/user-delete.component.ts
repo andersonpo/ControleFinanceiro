@@ -9,9 +9,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-delete.component.scss'],
 })
 export class UserDeleteComponent implements OnInit {
-  id: string = '';
+  id = '';
   user: IUser = null;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private router: Router,
@@ -36,18 +36,18 @@ export class UserDeleteComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao recuperar os dados do usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }
     );
   }
 
-  btnCancel() {
+  btnCancel(): void {
     this.router.navigate(['/user']);
   }
 
-  btnConfirm() {
+  btnConfirm(): void {
     this.userService.delete(this.id).subscribe(
       () => {
         this.errorMessage = '';
@@ -55,7 +55,7 @@ export class UserDeleteComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao excluir o usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }

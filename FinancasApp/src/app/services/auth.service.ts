@@ -23,6 +23,12 @@ import { Timestamp } from 'rxjs/internal/operators/timestamp';
 export class AuthService implements CanActivate {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -39,14 +45,8 @@ export class AuthService implements CanActivate {
     return true;
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
-
-  clearSession() {
-    //sessionStorage.clear();
+  clearSession(): void {
+    // sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('token_exp');
     sessionStorage.removeItem('token_iat');
@@ -99,15 +99,15 @@ export class AuthService implements CanActivate {
 
   getUser(): IUser {
     const userJson = sessionStorage.getItem('user');
-    if (userJson != null && userJson != undefined && userJson.length > 2) {
+    if (userJson !== null && userJson !== undefined && userJson.length > 2) {
       return JSON.parse(userJson);
     } else {
       return null;
     }
   }
 
-  login(email: string, password: string) {
-    const objLogin = { email: email, password: password };
+  login(email: string, password: string): Observable<any> {
+    const objLogin = { email, password };
 
     return this.httpClient
       .post(`${environment.urlServices}/login`, objLogin, this.httpOptions)
@@ -122,7 +122,7 @@ export class AuthService implements CanActivate {
       );
   }
 
-  refreshToken() {
+  refreshToken(): Observable<any> {
     return this.httpClient
       .get(`${environment.urlServices}/refreshtoken`, this.httpOptions)
       .pipe(
@@ -136,7 +136,7 @@ export class AuthService implements CanActivate {
       );
   }
 
-  handleError(error: HttpErrorResponse, methodName?: string, data?: any) {
+  handleError(error: HttpErrorResponse, methodName?: string, data?: any): Observable<never> {
     let errorMessage = '';
     let errorStatus = 500;
     if (error.error instanceof ErrorEvent) {
@@ -152,7 +152,7 @@ export class AuthService implements CanActivate {
       method: methodName,
       status: errorStatus,
       message: errorMessage,
-      data: data,
+      data,
     });
   }
 }

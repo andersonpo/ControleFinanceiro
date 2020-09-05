@@ -1,12 +1,14 @@
 import http from 'http';
-import app from './app';
+import app, { runMigrations } from './app';
 
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  return console.log(`Servidor disponivel em http://localhost:${PORT}`);
+  console.log(`\n\nServidor disponivel em http://localhost:${PORT}`);
+  runMigrations();
+  return;
 });
 
 server.once('error', (err) => {

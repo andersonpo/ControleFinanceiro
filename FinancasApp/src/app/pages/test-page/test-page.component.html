@@ -319,7 +319,7 @@
   placeholder="Selecione 1 item"
   [items]="itemsSelect"
   [selectedItem]="itemSelected"
-  (onSelected)="selectedItem($event)"
+  (actionSelected)="selectedItem($event)"
 ></app-select>
 <hr />
 <app-card name="card1">
@@ -382,7 +382,7 @@
   [width]="800"
   [height]="470"
   [open]="modalOpen"
-  (onClose)="onCloseModal()"
+  (actionClose)="onCloseModal()"
 >
   <span style="font-size: 22px; font-weight: bold;">Titulo Modal</span>
   <hr />

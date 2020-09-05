@@ -9,10 +9,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-photo-upload.component.scss'],
 })
 export class UserPhotoUploadComponent implements OnInit {
-  id: string = '';
+  id = '';
   user: any = null;
   uploadForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage = '';
 
   constructor(
     private router: Router,
@@ -42,24 +42,24 @@ export class UserPhotoUploadComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao recuperar os dados do usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }
     );
   }
 
-  onFileChange(event) {
+  onFileChange(event): void {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.patchValue({
-        file: file,
+        file,
       });
       console.log('file', file);
     }
   }
 
-  uploadPhoto(formValue) {
+  uploadPhoto(formValue): void {
     const formData = new FormData();
     formData.append('photo', formValue.file);
 
@@ -70,14 +70,14 @@ export class UserPhotoUploadComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao atualizar a foto do usuário';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }
     );
   }
 
-  btnBack() {
+  btnBack(): void {
     this.router.navigate(['/user']);
   }
 }

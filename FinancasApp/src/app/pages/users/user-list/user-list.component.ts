@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/interfaces/iuser';
 import { UserService } from 'src/app/services/user.service';
 import { ITable } from 'src/app/interfaces/itable';
 import { Router } from '@angular/router';
@@ -19,20 +18,19 @@ export class UserListComponent implements OnInit {
     this.getList();
   }
 
-  getList() {
+  getList(): void {
     this.userService.list().subscribe((value) => {
       this.users = value?.result;
       this.updateTable();
     });
   }
 
-  private updateTable() {
+  private updateTable(): void {
     const rows = [];
     const rowsPerPage = 10;
 
-    for (let index = 0; index < this.users.length; index++) {
-      const user = this.users[index];
-      let rowValue = [];
+    for (const user of this.users) {
+      const rowValue = [];
       rowValue.push({ value: user.id, visible: false });
       rowValue.push({ value: user.name, visible: true });
       rowValue.push({ value: user.email, visible: true });
@@ -41,14 +39,14 @@ export class UserListComponent implements OnInit {
     }
 
     this.table = {
-      rowsPerPage: rowsPerPage,
+      rowsPerPage,
       showLineNumber: true,
       columns: [
         { name: 'ID', visible: false, size: null },
         { name: 'Nome', visible: true, size: null },
         { name: 'Email', visible: true, size: null },
       ],
-      rows: rows,
+      rows,
       actions: {
         size: 420,
         buttons: [
@@ -89,11 +87,11 @@ export class UserListComponent implements OnInit {
     };
   }
 
-  btnCreateClick() {
+  btnCreateClick(): void {
     this.router.navigate(['/user/create']);
   }
 
-  actionClick(data) {
+  actionClick(data): void {
     switch (data.action) {
       case 'Detalhes':
         this.router.navigate(['user/details', { id: data.value }]);

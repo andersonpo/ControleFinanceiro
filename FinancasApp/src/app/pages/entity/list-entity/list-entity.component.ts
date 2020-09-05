@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ITable } from '../../../interfaces/itable';
+import { ITable, ITableRow } from '../../../interfaces/itable';
 
 @Component({
   selector: 'app-list-entity',
@@ -7,17 +7,17 @@ import { ITable } from '../../../interfaces/itable';
   styleUrls: ['./list-entity.component.scss'],
 })
 export class ListEntityComponent implements OnInit {
-  @Input() name: string = 'Entidade';
+  @Input() name = 'Entidade';
   @Input() table: ITable = null;
   @Output() btnCreateClick = new EventEmitter();
   @Output() actionClick = new EventEmitter();
 
-  page: number = 1;
-  pageSize: number = 10;
-  colspanPaginated: number = 0;
-  totalPages: number = 0;
+  page = 1;
+  pageSize = 10;
+  colspanPaginated = 0;
+  totalPages = 0;
 
-  getRowsPaginated() {
+  getRowsPaginated(): Array<ITableRow> {
     if (!this.table || !this.table?.rows || this.table?.rows?.length <= 0) {
       console.log('getRowsPaginated NO ROWS');
       return null;
@@ -58,27 +58,27 @@ export class ListEntityComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  btnCreate() {
+  btnCreate(): void {
     this.btnCreateClick.emit();
   }
 
-  actClick(action, data?) {
-    this.actionClick.emit({ action: action, value: data });
+  actClick(action, data?): void {
+    this.actionClick.emit({ action, value: data });
   }
 
-  btnLast() {
+  btnLast(): void {
     this.page = this.totalPages;
   }
 
-  btnNext() {
+  btnNext(): void {
     this.page = this.page + 1;
   }
 
-  btnPrevious() {
+  btnPrevious(): void {
     this.page = this.page - 1;
   }
 
-  btnFirst() {
+  btnFirst(): void {
     this.page = 1;
   }
 }

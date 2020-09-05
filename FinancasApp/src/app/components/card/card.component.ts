@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() name: string = '';
+  @Input() name = '';
   @Input() width: number = null;
   @Input() height: number = null;
 
@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getSizeCard() {
+  getSizeCard(): object {
     const resultDefault = { 'width.%': 100, 'height.%': 100 };
 
     if (this.width > 0 && this.height > 0) {

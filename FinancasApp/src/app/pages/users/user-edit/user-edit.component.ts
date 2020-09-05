@@ -15,9 +15,9 @@ import {
   styleUrls: ['./user-edit.component.scss'],
 })
 export class UserEditComponent implements OnInit {
-  id: string = '';
+  id = '';
   user: any = null;
-  errorMessage: string = '';
+  errorMessage = '';
   updateForm: FormGroup;
 
   constructor(
@@ -51,26 +51,26 @@ export class UserEditComponent implements OnInit {
         this.user = response.result;
         this.errorMessage = '';
 
-        this.updateForm.controls['name'].setValue(this.user.Name);
-        this.updateForm.controls['email'].setValue(this.user.Email);
+        this.updateForm.controls.name.setValue(this.user.Name);
+        this.updateForm.controls.email.setValue(this.user.Email);
       },
       (error) => {
         this.errorMessage = 'Falha ao recuperar os dados do usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }
     );
   }
 
-  btnBack() {
+  btnBack(): void {
     const previousUrl = sessionStorage.getItem('url');
     if (previousUrl?.length > 0) {
       const objParams = JSON.parse(sessionStorage.getItem('urlParams'));
       sessionStorage.removeItem('url');
       sessionStorage.removeItem('urlParams');
 
-      if (objParams != null && objParams != undefined) {
+      if (objParams !== null && objParams !== undefined) {
         this.router.navigate([previousUrl, objParams]);
       } else {
         this.router.navigate([previousUrl]);
@@ -80,7 +80,7 @@ export class UserEditComponent implements OnInit {
     }
   }
 
-  updateUser(data) {
+  updateUser(data): void {
     this.userService.update(this.id, data).subscribe(
       (response) => {
         this.errorMessage = '';
@@ -89,7 +89,7 @@ export class UserEditComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = 'Falha ao atualizar o usuário.';
-        if (error.status != 401) {
+        if (error.status !== 401) {
           console.log(error);
         }
       }

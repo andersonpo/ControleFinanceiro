@@ -6,17 +6,13 @@ class DataBase {
 
   private open = async (): Promise<void> => {
     this.db = await open({
-      driver: sqlite3.Database,
-      filename: process.env.DATABASE_PATH || ':memory',
+      'driver': sqlite3.Database,
+      'filename': process.env.DATABASE_PATH || ':memory',
     });
 
     this.db.on('trace', (data) => {
       // eslint-disable-next-line no-console
-      console.log(
-        '\n############################################################\n',
-        data,
-        '\n############################################################'
-      );
+      console.log('\n', data);
     });
   };
 

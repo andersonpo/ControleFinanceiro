@@ -27,17 +27,17 @@ import {
   ],
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
-  @Input() name: string = '';
+  @Input() name = '';
   @Input() formGroup: FormGroup;
-  @Input() type: string = 'text';
-  @Input() value: string = '';
-  @Input() disabled: boolean = false;
-  @Input() placeholder: string = '';
-  @Input() icon: string = '';
-  @Input() showIconRight: boolean = false;
-  @Input() error: boolean = false;
-  @Output() onPressEnter = new EventEmitter();
-  @Output() onValueChange = new EventEmitter();
+  @Input() type = 'text';
+  @Input() value = '';
+  @Input() disabled = false;
+  @Input() placeholder = '';
+  @Input() icon = '';
+  @Input() showIconRight = false;
+  @Input() error = false;
+  @Output() actionPressEnter = new EventEmitter();
+  @Output() actionValueChange = new EventEmitter();
 
   // ControlValueAccessor
   private onChange: Function;
@@ -64,9 +64,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {}
 
-  getClass() {
+  getClass(): object {
     const temIcon = this.icon.length > 0;
-    let result = {
+    const result = {
       'input-icon': temIcon,
       'input-icon-left': temIcon && this.showIconRight === false,
       'input-icon-right': temIcon && this.showIconRight === true,
@@ -76,13 +76,13 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     return result;
   }
 
-  onKeyEnter(event: any) {
-    this.onPressEnter.emit(event.target.value);
+  onKeyEnter(event: any): void {
+    this.actionPressEnter.emit(event.target.value);
   }
 
-  valueChange(event: any) {
+  valueChange(event: any): void {
     const value = event.target.value;
     this.onChange(value); // ControlValueAccessor
-    this.onValueChange.emit(value);
+    this.actionValueChange.emit(value);
   }
 }

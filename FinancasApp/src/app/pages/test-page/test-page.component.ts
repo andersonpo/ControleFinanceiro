@@ -7,11 +7,9 @@ import { SelectItem } from 'src/app/components/select/select.component';
   styleUrls: ['./test-page.component.scss'],
 })
 export class TestPageComponent implements OnInit {
-  modalOpen: boolean = false;
 
   constructor() {}
-
-  ngOnInit(): void {}
+  modalOpen = false;
 
   itemsSelect: Array<SelectItem> = [
     { text: '1 Opção X', value: 'X' },
@@ -32,23 +30,25 @@ export class TestPageComponent implements OnInit {
   ];
   itemSelected: SelectItem = this.itemsSelect[2];
 
-  btnClick(event) {
+  ngOnInit(): void {}
+
+  btnClick(event): void {
     console.log('btn ' + event.target.innerText + ' click');
   }
 
-  selectedItem(item: SelectItem) {
+  selectedItem(item: SelectItem): void {
     console.log('select item', item);
   }
-  btnAbrirModal(event) {
+  btnAbrirModal(event): void {
     this.modalOpen = true;
     console.log('abrir modal', this.modalOpen);
   }
-  btnFecharModal(event) {
+  btnFecharModal(event): void {
     this.modalOpen = false;
     console.log('fechar modal', this.modalOpen);
   }
 
-  onCloseModal() {
+  onCloseModal(): void {
     this.modalOpen = false;
     console.log('fechou modal');
   }

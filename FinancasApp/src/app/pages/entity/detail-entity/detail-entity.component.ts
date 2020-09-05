@@ -6,14 +6,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./detail-entity.component.scss'],
 })
 export class DetailEntityComponent implements OnInit {
-  @Input() name: string = '';
+  @Input() name = '';
   @Output() btnBackClick = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  btnBack() {
+  btnBack(): void {
     this.btnBackClick.emit();
   }
 }

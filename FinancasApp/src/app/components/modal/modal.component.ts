@@ -6,22 +6,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  @Input() name: string = '';
-  @Input() open: boolean = false;
+  @Input() name = '';
+  @Input() open = false;
   @Input() width: number = null;
   @Input() height: number = null;
-  @Output() onClose = new EventEmitter();
+  @Output() actionClose = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  closeModal() {
+  closeModal(): void {
     this.open = false;
-    this.onClose.emit();
+    this.actionClose.emit();
   }
 
-  getSizeModal() {
+  getSizeModal(): object {
     const resultDefault = { 'width.%': 100, 'height.%': 100 };
 
     if (this.width > 0 && this.height > 0) {

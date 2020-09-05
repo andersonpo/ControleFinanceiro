@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.user = this.authService.getUser();
   }
 
-  btnUsersClick() {
+  btnUsersClick(): void {
     this.router.navigate(['user']);
   }
 }
