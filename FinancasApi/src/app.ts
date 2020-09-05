@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import IResponse from './interfaces/IResponse';
 import userRouters from './routes/user-router';
+import categoryRouters from './routes/category-router';
+import subCategoryRouters from './routes/subcategory-router';
+import categorySubCategoryRouters from './routes/category-subcategory-router';
 import UserService from './services/user-service';
 import MigrationsService from './services/migrations-service';
 import Auth from './middlewares/auth';
@@ -31,9 +34,12 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // registrar as Rotas
 const auth = new Auth();
 const userService = new UserService();
-app.use('/login', userService.login);
+app.post('/login', userService.login);
 app.use('/refreshtoken', auth.required, userService.refreshToken);
 app.use('/users', userRouters);
+app.use('/category', categoryRouters);
+app.use('/subcategory', subCategoryRouters);
+app.use('/category-subcategory', categorySubCategoryRouters);
 
 // Tratamento de Erros (quando não encontrar a rota)
 app.use((req: Request, res: Response, next: NextFunction) => {

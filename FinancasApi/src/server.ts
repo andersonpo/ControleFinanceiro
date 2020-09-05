@@ -1,7 +1,8 @@
 import http from 'http';
 import app, { runMigrations } from './app';
+import environment from './environment';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || environment.port || 3000;
 const server = http.createServer(app);
 
 server.listen(PORT, () => {

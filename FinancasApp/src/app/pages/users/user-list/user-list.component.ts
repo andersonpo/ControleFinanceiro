@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
   users: Array<any> = null;
   table: ITable = null;
+  pageIndex: number = 1;
+  pageSize: number = 10;
 
   constructor(private router: Router, private userService: UserService) {}
 
@@ -19,15 +21,14 @@ export class UserListComponent implements OnInit {
   }
 
   getList(): void {
-    this.userService.list().subscribe((value) => {
+    this.userService.list(this.pageIndex, this.pageSize).subscribe((value) => {
       this.users = value?.result;
-      this.updateTable();
+      this.updateTable(value?.pageIndex, value?.pageSize, value?.pageTotal, value?.rowsTotal);
     });
   }
 
-  private updateTable(): void {
+  private updateTable(pageIndex: number, pageSize: number, pageTotal: number, rowsTotal: number): void {
     const rows = [];
-    const rowsPerPage = 10;
 
     for (const user of this.users) {
       const rowValue = [];
@@ -39,7 +40,10 @@ export class UserListComponent implements OnInit {
     }
 
     this.table = {
-      rowsPerPage,
+      pageIndex: pageIndex,
+      pageSize: pageSize,
+      pageTotal: pageTotal,
+      rowsTotal: rowsTotal,
       showLineNumber: true,
       columns: [
         { name: 'ID', visible: false, size: null },
@@ -79,9 +83,7 @@ export class UserListComponent implements OnInit {
       footer: [
         {
           colspan: 4,
-          pretext: 'Exibindo ' + rowsPerPage + ' de ',
-          value: rows?.length,
-          postext: 'registro(s)',
+          value: 'Exibindo ' + pageSize + ' de ' + rowsTotal + ' registro(s) - Página ' + pageIndex + ' de ' + pageTotal,
         },
       ],
     };
@@ -109,5 +111,10 @@ export class UserListComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  changePage(page) {
+    this.pageIndex = page;
+    this.getList();
   }
 }

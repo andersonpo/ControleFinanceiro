@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -12,13 +12,17 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-    }),
+    })
   };
 
-  list(): Observable<any> {
+  list(pageIndex: number, pageSize: number = 10): Observable<any> {
+    const httpOptionsPaginated = {
+      headers: this.httpOptions.headers,
+      params: new HttpParams().set('pageIndex', pageIndex.toString()).set('pageSize', pageSize.toString())
+    };
     return this.httpClient.get(
       `${environment.urlServices}/users`,
-      this.httpOptions
+      httpOptionsPaginated
     );
   }
 

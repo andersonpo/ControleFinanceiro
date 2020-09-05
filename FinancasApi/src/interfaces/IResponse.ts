@@ -3,4 +3,8 @@ export default interface IResponse {
   message?: string;
   token?: string;
   result?: any;
+  pageIndex?: number;
+  pageSize?: number;
+  pageTotal?: number;
+  rowsTotal?: number;
 }

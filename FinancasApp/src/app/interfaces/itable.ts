@@ -1,5 +1,8 @@
 export interface ITable {
-  rowsPerPage: number;
+  pageIndex: number;
+  pageSize: number;
+  pageTotal: number;
+  rowsTotal: number;
   showLineNumber: boolean;
   columns: Array<ITableColumn>;
   rows: Array<ITableRow>;
@@ -19,9 +22,7 @@ export interface ITableColumn {
 
 export interface ITableFooter {
   colspan: number;
-  pretext: string;
   value: any;
-  postext: string;
 }
 
 export interface ITableAction {

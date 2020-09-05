@@ -7,12 +7,35 @@ import IResponse from '../interfaces/IResponse';
 import DataBase from './database-service';
 import Auth from '../middlewares/auth';
 import fs from 'fs/promises';
+import environment from '../environment';
 
 class UserService {
   private database = new DataBase();
 
+  getCount = async (): Promise<number> => {
+    const query = 'SELECT COUNT(1) total FROM user';
+    const result = await this.database.getSingle(query);
+    return result.total;
+  };
+
   listUsers = async (req: Request, res: Response): Promise<Response<any>> => {
-    const query = 'SELECT * FROM user u ORDER BY u.name ASC';
+    let response: IResponse = { message: null };
+    const pageSize = Number(req.query.pageSize || environment.pageSize);
+    const pageIndex = Number(req.query.pageIndex || environment.pageIndex);
+
+    console.log('page', pageIndex, pageSize, req.query);
+    if (pageSize < 1 || pageIndex < 1) {
+      response = {
+        message: 'pageSize e pageIndex deve ser maior que zero',
+      };
+      return res.status(400).send(response);
+    }
+
+    const query =
+      'SELECT * FROM user u ORDER BY u.name ASC LIMIT ' +
+      pageSize +
+      ' OFFSET ' +
+      (pageIndex - 1) * pageSize;
     const result = await this.database.getMany(query);
 
     // remove passwords
@@ -20,8 +43,14 @@ class UserService {
       u.password = null;
     });
 
-    const response: IResponse = {
+    const rowsCount = await this.getCount();
+
+    response = {
       'result': result,
+      'pageIndex': pageIndex,
+      'pageSize': pageSize,
+      'pageTotal': Math.ceil(rowsCount / pageSize),
+      'rowsTotal': rowsCount,
     };
     return res.status(200).send(response);
   };

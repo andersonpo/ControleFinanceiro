@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ITable, ITableRow } from '../../../interfaces/itable';
 
 @Component({
@@ -6,55 +6,44 @@ import { ITable, ITableRow } from '../../../interfaces/itable';
   templateUrl: './list-entity.component.html',
   styleUrls: ['./list-entity.component.scss'],
 })
-export class ListEntityComponent implements OnInit {
+export class ListEntityComponent implements OnInit, OnChanges {
   @Input() name = 'Entidade';
   @Input() table: ITable = null;
   @Output() btnCreateClick = new EventEmitter();
   @Output() actionClick = new EventEmitter();
+  @Output() btnPageClick = new EventEmitter();
 
   page = 1;
   pageSize = 10;
-  colspanPaginated = 0;
   totalPages = 0;
 
-  getRowsPaginated(): Array<ITableRow> {
-    if (!this.table || !this.table?.rows || this.table?.rows?.length <= 0) {
-      console.log('getRowsPaginated NO ROWS');
-      return null;
-    }
-
-    this.totalPages = Math.ceil(this.table.rows.length / this.pageSize);
-    this.pageSize = this.table.rowsPerPage || 10;
-    this.colspanPaginated = 0;
+  getColSpanPaginated(): number {
+    let colspanPaginated = 0;
     this.table.columns.forEach((col) => {
       if (col.visible) {
-        this.colspanPaginated += 1;
+        colspanPaginated += 1;
       }
     });
 
     if (this.table.showLineNumber) {
-      this.colspanPaginated += 1;
+      colspanPaginated += 1;
     }
 
     if (this.table.actions.buttons.length > 0) {
-      this.colspanPaginated += 1;
+      colspanPaginated += 1;
     }
 
-    const start = (this.page - 1) * this.pageSize;
-    const end = this.page * this.pageSize;
-    if (this.table.rows.length >= start) {
-      return this.table.rows.slice(start, end);
-    } else {
-      console.log(
-        'getRowsPaginated NOK - start > rows',
-        start,
-        this.table.rows.length
-      );
-      return null;
-    }
+    return colspanPaginated;
   }
 
   constructor() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.table) {
+      this.page = this.table.pageIndex;
+      this.pageSize = this.table.pageSize;
+      this.totalPages = this.table.pageTotal;
+    }
+  }
 
   ngOnInit(): void {}
 
@@ -68,17 +57,25 @@ export class ListEntityComponent implements OnInit {
 
   btnLast(): void {
     this.page = this.totalPages;
+    this.changePage();
   }
 
   btnNext(): void {
     this.page = this.page + 1;
+    this.changePage();
   }
 
   btnPrevious(): void {
     this.page = this.page - 1;
+    this.changePage();
   }
 
   btnFirst(): void {
     this.page = 1;
+    this.changePage();
+  }
+
+  changePage() {
+    this.btnPageClick.emit(this.page)
   }
 }
