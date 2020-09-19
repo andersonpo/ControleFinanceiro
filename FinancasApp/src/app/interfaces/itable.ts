@@ -11,7 +11,7 @@ export interface ITable {
 }
 
 export interface ITableRow {
-  values: Array<{ value: any; visible: boolean }>;
+  values: Array<{ type: typeValue, value: any; visible: boolean }>;
 }
 
 export interface ITableColumn {
@@ -33,4 +33,11 @@ export interface ITableAction {
     icon: string;
     iconColor: string;
   }>;
+}
+
+export enum typeValue {
+  text = 0,
+  number = 1,
+  colorHex = 2,
+  iconText = 3
 }

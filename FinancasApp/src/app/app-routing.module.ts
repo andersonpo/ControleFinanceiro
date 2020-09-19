@@ -11,6 +11,11 @@ import { UserDeleteComponent } from './pages/users/user-delete/user-delete.compo
 import { UserDetailComponent } from './pages/users/user-detail/user-detail.component';
 import { UserCreateComponent } from './pages/users/user-create/user-create.component';
 import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-photo-upload.component';
+import { CategoryListComponent } from './pages/category/category-list/category-list.component';
+import { CategoryCreateComponent } from './pages/category/category-create/category-create.component';
+import { CategoryDeleteComponent } from './pages/category/category-delete/category-delete.component';
+import { CategoryDetailComponent } from './pages/category/category-detail/category-detail.component';
+import { CategoryEditComponent } from './pages/category/category-edit/category-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,6 +37,17 @@ const routes: Routes = [
       { path: 'details', component: UserDetailComponent },
       { path: 'photo', component: UserPhotoUploadComponent },
     ],
+  },
+  {
+    path: 'category',
+    canActivate: [AuthService],
+    children: [
+      { path: '', component: CategoryListComponent },
+      { path: 'create', component: CategoryCreateComponent },
+      { path: 'edit', component: CategoryEditComponent },
+      { path: 'delete', component: CategoryDeleteComponent },
+      { path: 'details', component: CategoryDetailComponent },
+    ]
   },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' },

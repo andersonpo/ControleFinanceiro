@@ -28,13 +28,18 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.updateUser();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.userToken = this.authService.getUser();
-        this.userService.findById(this.userToken.Id).subscribe((value) => {
-          this.user = value.result;
-        });
+        this.updateUser();
       }
+    });
+  }
+
+  private updateUser(): void {
+    this.userToken = this.authService.getUser();
+    this.userService.findById(this.userToken?.Id).subscribe((value) => {
+      this.user = value.result;
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ITable, ITableRow } from '../../../interfaces/itable';
+import { ITable, typeValue } from '../../../interfaces/itable';
 
 @Component({
   selector: 'app-list-entity',
@@ -37,6 +37,7 @@ export class ListEntityComponent implements OnInit, OnChanges {
   }
 
   constructor() {}
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.table) {
       this.page = this.table.pageIndex;
@@ -46,6 +47,43 @@ export class ListEntityComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {}
+
+  getRowValue(cellValue: any, valueType: any): { style: string, value: string } {
+    let style = '';
+    let value = cellValue;
+
+    if (valueType) {
+      switch (valueType) {
+        case typeValue.text:
+          style = ''; 
+          value = cellValue;
+          break;
+        case typeValue.number:
+          style = '';  
+          value = Number(cellValue);
+          break;
+        case typeValue.iconText:
+          style = '';    
+          value = cellValue;
+          break;
+        case typeValue.colorHex:
+          style = 'background-color: ' + cellValue;    
+          value = cellValue;
+          break;
+
+        default:
+          style = '';  
+          value = cellValue;
+          break;
+      }
+    }
+
+    return { style: style, value: value };
+  }
+
+  getRowValueIcon(cellValue: any): any {
+    return cellValue;
+  }
 
   btnCreate(): void {
     this.btnCreateClick.emit();

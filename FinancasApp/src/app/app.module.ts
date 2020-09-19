@@ -14,12 +14,18 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
 import { ResizeService } from './services/resize.service';
+import { CategoryService } from './services/category.service';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserEditComponent } from './pages/users/user-edit/user-edit.component';
 import { UserDeleteComponent } from './pages/users/user-delete/user-delete.component';
 import { UserDetailComponent } from './pages/users/user-detail/user-detail.component';
 import { UserCreateComponent } from './pages/users/user-create/user-create.component';
 import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-photo-upload.component';
+import { CategoryListComponent } from './pages/category/category-list/category-list.component';
+import { CategoryCreateComponent } from './pages/category/category-create/category-create.component';
+import { CategoryDeleteComponent } from './pages/category/category-delete/category-delete.component';
+import { CategoryDetailComponent } from './pages/category/category-detail/category-detail.component';
+import { CategoryEditComponent } from './pages/category/category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,11 @@ import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-p
     UserDetailComponent,
     UserCreateComponent,
     UserPhotoUploadComponent,
+    CategoryListComponent,
+    CategoryCreateComponent,
+    CategoryDeleteComponent,
+    CategoryDetailComponent,
+    CategoryEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +64,7 @@ import { UserPhotoUploadComponent } from './pages/users/user-photo-upload/user-p
       multi: true,
     },
     ResizeService,
+    CategoryService
   ],
   bootstrap: [AppComponent],
 })

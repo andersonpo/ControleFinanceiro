@@ -42,7 +42,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr *ngFor="let row of getRowsPaginated(); let i = index"> -->
         <tr *ngFor="let row of table?.rows; let i = index">
           <td *ngIf="table?.showLineNumber">
             {{ page <= 1 ? i + 1 : pageSize * (page - 1) + (i + 1) }}
@@ -50,8 +49,9 @@
           <td
             [style.display]="rowValue?.visible ? 'table-cell' : 'none'"
             *ngFor="let rowValue of row?.values"
+            [style]="getRowValue(rowValue?.value, rowValue?.type).style"
           >
-            {{ rowValue?.value }}
+          {{ (rowValue?.type == 3) ? getRowValueIcon(rowValue?.value) : getRowValue(rowValue?.value, rowValue?.type).value }}
           </td>
           <td *ngIf="table?.actions?.buttons">
             <div

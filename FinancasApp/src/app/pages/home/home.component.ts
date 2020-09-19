@@ -20,4 +20,8 @@ export class HomeComponent implements OnInit {
   btnUsersClick(): void {
     this.router.navigate(['user']);
   }
+
+  btnCategoriasClick(): void {
+    this.router.navigate(['category']);
+  }
 }
