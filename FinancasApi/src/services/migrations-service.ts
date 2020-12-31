@@ -1,8 +1,6 @@
 import DataBase from './database-service';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
-import { ISqlite } from 'sqlite';
-import { Statement } from 'sqlite3';
 
 class MigrationsService {
   private database = new DataBase();

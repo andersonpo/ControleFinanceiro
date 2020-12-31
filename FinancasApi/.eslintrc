@@ -18,9 +18,9 @@
     //https://eslint.org/docs/rules/
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "semi": ["error", "always"],
-    "no-extra-semi": ["error", "always"],
+    "no-extra-semi": ["error"],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "quote-props": ["error", "always"],
+    "quote-props": ["error", "as-needed"],
     "eol-last": ["error", "always"],
     "linebreak-style": ["error", "windows"],
     "@typescript-eslint/no-explicit-any": ["off", { "ignoreRestArgs": true }],

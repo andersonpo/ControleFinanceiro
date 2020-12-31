@@ -1,13 +1,17 @@
-import { Database, open, Statement, ISqlite } from 'sqlite';
+import { Database, open, ISqlite } from 'sqlite';
 import sqlite3 from 'sqlite3';
+import environment from '../environment';
 
 class DataBase {
   private db: Database;
 
   private open = async (): Promise<void> => {
+    const databasePath =
+      process.env.DATABASE_PATH || environment.DATABASE_PATH || ':memory:';
+
     this.db = await open({
-      'driver': sqlite3.Database,
-      'filename': process.env.DATABASE_PATH || ':memory',
+      driver: sqlite3.Database,
+      filename: databasePath,
     });
 
     this.db.on('trace', (data) => {

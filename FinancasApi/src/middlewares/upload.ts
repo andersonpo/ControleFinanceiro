@@ -1,19 +1,19 @@
 import multer from 'multer';
 
 const multerStorage = multer.diskStorage({
-  'destination': function (req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, 'uploads/');
   },
-  'filename': function (req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
 
 const maxSizeMB = 3;
 const uploads = multer({
-  'storage': multerStorage,
-  'limits': { 'fileSize': maxSizeMB * 1024 * 1024 },
-  'fileFilter': fileFilterImage,
+  storage: multerStorage,
+  limits: { fileSize: maxSizeMB * 1024 * 1024 },
+  fileFilter: fileFilterImage,
 });
 
 function fileFilterImage(req, file, cb) {

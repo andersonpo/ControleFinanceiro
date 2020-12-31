@@ -23,7 +23,7 @@ class Auth {
     const user = this.getUserFromTokenHeader(req.headers.authorization);
     if (user === null) {
       const response: IResponse = {
-        'message': 'Falha na autenticação (Header Token)',
+        message: 'Falha na autenticação (Header Token)',
       };
       return res.status(401).send(response);
     }

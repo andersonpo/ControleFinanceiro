@@ -1,5 +1,6 @@
 export default Object.freeze({
-  port: 3000,
-  pageIndex: 1,
-  pageSize: 10,
+  PORT: 3000,
+  PAGE_INDEX: 1,
+  PAGE_SIZE: 10,
+  DATABASE_PATH: 'database.db',
 });

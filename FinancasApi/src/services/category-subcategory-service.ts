@@ -19,10 +19,9 @@ class CategorySubCategoryService {
     res: Response
   ): Promise<Response<any>> => {
     let response: IResponse = { message: null };
-    const pageSize = Number(req.query.pageSize || environment.pageSize);
-    const pageIndex = Number(req.query.pageIndex || environment.pageIndex);
+    const pageSize = Number(req.query.pageSize || environment.PAGE_SIZE);
+    const pageIndex = Number(req.query.pageIndex || environment.PAGE_INDEX);
 
-    console.log('page', pageIndex, pageSize, req.query);
     if (pageSize < 1 || pageIndex < 1) {
       response = {
         message: 'pageSize e pageIndex deve ser maior que zero',
@@ -41,7 +40,7 @@ class CategorySubCategoryService {
     const result = await this.database.getMany(query);
 
     // loop montando objeto
-    let categoriesWithSubCategories: Array<ICategorySubcategory> = [];
+    const categoriesWithSubCategories: Array<ICategorySubcategory> = [];
     let categorySubCategory: ICategorySubcategory;
 
     result.forEach((item) => {
@@ -66,11 +65,11 @@ class CategorySubCategoryService {
     const rowsCount = await this.getCount();
 
     response = {
-      'result': categoriesWithSubCategories,
-      'pageIndex': pageIndex,
-      'pageSize': pageSize,
-      'pageTotal': Math.ceil(rowsCount / pageSize),
-      'rowsTotal': rowsCount,
+      result: categoriesWithSubCategories,
+      pageIndex: pageIndex,
+      pageSize: pageSize,
+      pageTotal: Math.ceil(rowsCount / pageSize),
+      rowsTotal: rowsCount,
     };
     return res.status(200).send(response);
   };
@@ -125,18 +124,18 @@ class CategorySubCategoryService {
     if (id.length <= 0) {
       return res
         .status(400)
-        .send({ 'message': 'Categoria_SubCategoria ID inválido' });
+        .send({ message: 'Categoria_SubCategoria ID inválido' });
     }
 
     if (subcategory === null || subcategory === undefined) {
       return res
         .status(404)
-        .send({ 'message': 'Categoria_SubCategoria não encontrado' });
+        .send({ message: 'Categoria_SubCategoria não encontrado' });
     }
 
     const response: IResponse = {
-      'message': 'Categoria_SubCategoria encontrado com sucesso',
-      'result': subcategory,
+      message: 'Categoria_SubCategoria encontrado com sucesso',
+      result: subcategory,
     };
 
     return res.status(200).send(response);
@@ -151,7 +150,7 @@ class CategorySubCategoryService {
 
     if (cId?.length < 1 || sId.length < 1) {
       return res.status(400).send({
-        'message': 'Dados inválidos (category_id, subcategory_id)',
+        message: 'Dados inválidos (category_id, subcategory_id)',
       });
     }
 
@@ -160,12 +159,12 @@ class CategorySubCategoryService {
     const result = await this.database.execute(query, uuidv4(), cId, sId);
 
     if (result.changes <= 0) {
-      return res.status(500).send({ 'message': 'Nenhum registro incluido' });
+      return res.status(500).send({ message: 'Nenhum registro incluido' });
     }
 
     const response: IResponse = {
-      'message': 'Categoria_SubCategoria criado com sucesso',
-      'result': null,
+      message: 'Categoria_SubCategoria criado com sucesso',
+      result: null,
     };
     return res.status(201).send(response);
   };
@@ -180,18 +179,18 @@ class CategorySubCategoryService {
     if (categorySubCategory === null || categorySubCategory === undefined) {
       return res
         .status(404)
-        .send({ 'message': 'Categoria_SubCategoria não encontrado' });
+        .send({ message: 'Categoria_SubCategoria não encontrado' });
     }
 
     const query = 'DELETE FROM category_subcategory WHERE id = ?';
     const result = await this.database.execute(query, categorySubCategory.Id);
 
     if (result.changes <= 0) {
-      return res.status(500).send({ 'message': 'Nenhum registro excluido' });
+      return res.status(500).send({ message: 'Nenhum registro excluido' });
     }
 
     const response: IResponse = {
-      'message': 'Categoria_SubCategoria excluido com sucesso',
+      message: 'Categoria_SubCategoria excluido com sucesso',
     };
 
     return res.status(200).send(response);

@@ -21,10 +21,9 @@ class CategoryService {
     res: Response
   ): Promise<Response<any>> => {
     let response: IResponse = { message: null };
-    const pageSize = Number(req.query.pageSize || environment.pageSize);
-    const pageIndex = Number(req.query.pageIndex || environment.pageIndex);
+    const pageSize = Number(req.query.pageSize || environment.PAGE_SIZE);
+    const pageIndex = Number(req.query.pageIndex || environment.PAGE_INDEX);
 
-    console.log('page', pageIndex, pageSize, req.query);
     if (pageSize < 1 || pageIndex < 1) {
       response = {
         message: 'pageSize e pageIndex deve ser maior que zero',
@@ -41,21 +40,21 @@ class CategoryService {
     const rowsCount = await this.getCount();
 
     response = {
-      'result': result,
-      'pageIndex': pageIndex,
-      'pageSize': pageSize,
-      'pageTotal': Math.ceil(rowsCount / pageSize),
-      'rowsTotal': rowsCount,
+      result: result,
+      pageIndex: pageIndex,
+      pageSize: pageSize,
+      pageTotal: Math.ceil(rowsCount / pageSize),
+      rowsTotal: rowsCount,
     };
     return res.status(200).send(response);
   };
 
   getCategoryById = async (id: string): Promise<ICategory> => {
     const category: ICategory = {
-      'Id': '',
-      'Icon': '',
-      'Name': '',
-      'Color': '',
+      Id: '',
+      Icon: '',
+      Name: '',
+      Color: '',
     };
     const result = await this.database.getSingle(
       'SELECT * FROM category u WHERE u.id = ?',
@@ -78,10 +77,10 @@ class CategoryService {
 
   getCategoryByName = async (name: string): Promise<ICategory> => {
     const category: ICategory = {
-      'Id': '',
-      'Name': '',
-      'Color': '',
-      'Icon': '',
+      Id: '',
+      Name: '',
+      Color: '',
+      Icon: '',
     };
 
     const result = await this.database.getSingle(
@@ -110,16 +109,16 @@ class CategoryService {
     const category = await this.getCategoryById(id);
 
     if (id.length <= 0) {
-      return res.status(400).send({ 'message': 'Categoria ID inválido' });
+      return res.status(400).send({ message: 'Categoria ID inválido' });
     }
 
     if (category === null || category === undefined) {
-      return res.status(404).send({ 'message': 'Categoria não encontrado' });
+      return res.status(404).send({ message: 'Categoria não encontrado' });
     }
 
     const response: IResponse = {
-      'message': 'Categoria encontrado com sucesso',
-      'result': category,
+      message: 'Categoria encontrado com sucesso',
+      result: category,
     };
 
     return res.status(200).send(response);
@@ -140,7 +139,7 @@ class CategoryService {
     const result = await this.database.getMany(query, category_id);
 
     let categoriesWithSubCategories: ICategoryWithSubCategories;
-    let subCategories: Array<ISubCategory> = [];
+    const subCategories: Array<ISubCategory> = [];
     let subCategory: ISubCategory;
 
     result.forEach((item) => {
@@ -162,8 +161,8 @@ class CategoryService {
     });
 
     const response: IResponse = {
-      'message': 'Categoria_SubCategoria encontrado com sucesso',
-      'result': categoriesWithSubCategories,
+      message: 'Categoria_SubCategoria encontrado com sucesso',
+      result: categoriesWithSubCategories,
     };
 
     return res.status(200).send(response);
@@ -179,12 +178,12 @@ class CategoryService {
     let category = await this.getCategoryByName(name);
 
     if (category != undefined) {
-      return res.status(202).send({ 'message': 'Categoria já cadastrado' });
+      return res.status(202).send({ message: 'Categoria já cadastrado' });
     }
 
     if (name?.length < 3) {
       return res.status(400).send({
-        'message': 'Dados inválidos (name < 3)',
+        message: 'Dados inválidos (name < 3)',
       });
     }
 
@@ -199,13 +198,13 @@ class CategoryService {
     );
 
     if (result.changes <= 0) {
-      return res.status(500).send({ 'message': 'Nenhum registro incluido' });
+      return res.status(500).send({ message: 'Nenhum registro incluido' });
     }
 
     category = await this.getCategoryByName(name);
     const response: IResponse = {
-      'message': 'Categoria criado com sucesso',
-      'result': category,
+      message: 'Categoria criado com sucesso',
+      result: category,
     };
     return res.status(201).send(response);
   };
@@ -219,7 +218,7 @@ class CategoryService {
     let category = await this.getCategoryById(id);
 
     if (category === null || category === undefined) {
-      return res.status(404).send({ 'message': 'Categoria não encontrado' });
+      return res.status(404).send({ message: 'Categoria não encontrado' });
     }
 
     const query =
@@ -233,13 +232,13 @@ class CategoryService {
     );
 
     if (result.changes <= 0) {
-      return res.status(500).send({ 'message': 'Nenhum registro atualizado' });
+      return res.status(500).send({ message: 'Nenhum registro atualizado' });
     }
 
     category = await this.getCategoryById(id);
     const response: IResponse = {
-      'message': 'Categoria atualizado com sucesso',
-      'result': category,
+      message: 'Categoria atualizado com sucesso',
+      result: category,
     };
 
     return res.status(200).send(response);
@@ -253,18 +252,18 @@ class CategoryService {
     const category = await this.getCategoryById(id);
 
     if (category === null || category === undefined) {
-      return res.status(404).send({ 'message': 'Categoria não encontrado' });
+      return res.status(404).send({ message: 'Categoria não encontrado' });
     }
 
     const query = 'DELETE FROM category WHERE id = ?';
     const result = await this.database.execute(query, category.Id);
 
     if (result.changes <= 0) {
-      return res.status(500).send({ 'message': 'Nenhum registro excluido' });
+      return res.status(500).send({ message: 'Nenhum registro excluido' });
     }
 
     const response: IResponse = {
-      'message': 'Categoria excluido com sucesso',
+      message: 'Categoria excluido com sucesso',
     };
 
     return res.status(200).send(response);

@@ -27,6 +27,7 @@ npm i -S sqlite => banco de dados
 npm i -S uuid => guid
 npm i -S morgan => log
 npm i -S multer => receber dados atraves de multipart/form-data
+npm i -S typeorm => ORM, Banco de Dados, Migrations
 
 # Arquivos de configuração
 
