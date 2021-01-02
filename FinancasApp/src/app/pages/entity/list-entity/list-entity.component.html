@@ -51,7 +51,8 @@
             *ngFor="let rowValue of row?.values"
             [style]="getRowValue(rowValue?.value, rowValue?.type).style"
           >
-          {{ (rowValue?.type == 3) ? getRowValueIcon(rowValue?.value) : getRowValue(rowValue?.value, rowValue?.type).value }}
+          <i *ngIf="rowValue?.type == 3" class="fas fa-lg {{ rowValue?.value }}"></i>
+          {{ (rowValue?.type == 3) ? getRowValueIcon(rowValue?.value) : getRowValue(rowValue?.value, rowValue?.type).value }}          
           </td>
           <td *ngIf="table?.actions?.buttons">
             <div
@@ -152,5 +153,19 @@
         </tr>
       </tfoot>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <app-button
+      name="btnHome"
+      text="Home"
+      [disabled]="false"
+      color="cinza"
+      (click)="btnHome()"
+      icon="fa-home"
+      iconColor="#fff"
+    ></app-button>
   </div>
 </div>

@@ -1,7 +1,7 @@
 .header-component {
   width: 100%;
   margin-top: 0;
-  height: 60px;
+  height: 80px;
   background-color: var(--cinzaEscuro);
   color: var(--branco);
   border-radius: 0 0 4px 4px;
@@ -10,13 +10,9 @@
   padding-right: 16px;  
 }
 
-.title {
-  display: contents;
-}
-
 .text {
   color: var(--branco);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   cursor: pointer;
   vertical-align: top;
@@ -24,23 +20,36 @@
 
 .photo {
   width: 64px;
-  height: auto;
-  padding-right: 8px;
+  height: 64px;
   border-radius: 50%;
+  margin: 10px 4px;
 }
 
 .username {
-  width: 230px;
+  width: 280px;
+  height: 80px;
   float: right;
   cursor: pointer;
+  margin-top: -8px;
+}
+
+.username-text {
+  color: var(--branco);
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  vertical-align: top;
+  padding-left: 10px;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .icon {
-  padding-left: 8px;
+  padding-left: 10px;
   color: var(--branco);
   cursor: pointer;
   position: absolute;
-  top: 18px
+  top: 26px
 }
 
 .separator {

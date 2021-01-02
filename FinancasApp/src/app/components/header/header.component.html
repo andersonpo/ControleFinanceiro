@@ -1,10 +1,8 @@
 <div *ngIf="user" class="header-component">
-  <div class="title">
-    <label class="text" (click)="handleTitleClick()">{{ title }}</label>
-  </div>
+  <label class="text" (click)="handleTitleClick()">{{ title }}</label>
   <div class="username" (click)="handleUserClick()">
     <img class="photo" [src]="profileImageUrl" alt="Perfil" />
-    <label class="text">{{ user?.Name }}</label>
+    <label class="username-text">{{ user?.Name }}</label>
     <i class="icon fas fa-lg" [ngClass]="getIconName()"></i>
     <div class="username-items" [style.display]="getDisplayUserItems()">
       <ul>

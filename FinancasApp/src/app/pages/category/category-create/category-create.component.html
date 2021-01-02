@@ -1,1 +1,65 @@
-<p>category-create works!</p>
+<app-create-entity name="Categoria" (btnBackClick)="btnVoltar()">
+  <form [formGroup]="createForm" (ngSubmit)="btnSalvar(createForm.value)">
+    <div class="row">
+      <div class="col-md-12">
+        <label>Nome</label>
+        <app-input
+          name="txtNome"
+          placeholder="Nome"
+          [formGroup]="createForm"
+          formControlName="name"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Icone</label>
+        <app-input
+          name="txtIcon"
+          placeholder="Icone"
+          icon="{{ createForm?.controls.icon.value }}"
+          [formGroup]="createForm"
+          formControlName="icon"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Cor</label>
+        <app-input
+          name="txtcor"
+          type="text"
+          placeholder="Cor (Hex)"
+          inputStyle="'background-color': {{createForm?.controls.color.value}}"
+          [formGroup]="createForm"
+          formControlName="color"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <app-button
+          name="btnSalvar"
+          type="submit"
+          text="Salvar"
+          [disabled]="!createForm.valid"
+          color="vermelho"
+        ></app-button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div
+          class="error"
+          style="text-align: center;"
+          *ngIf="errorMessage.length > 0"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </form>
+</app-create-entity>

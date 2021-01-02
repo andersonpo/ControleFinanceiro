@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/interfaces/iuser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import {

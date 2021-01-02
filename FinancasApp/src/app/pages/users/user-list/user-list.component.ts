@@ -83,7 +83,7 @@ export class UserListComponent implements OnInit {
       footer: [
         {
           colspan: 4,
-          value: 'Exibindo ' + pageSize + ' de ' + rowsTotal + ' registro(s) - Página ' + pageIndex + ' de ' + pageTotal,
+          value: 'Exibindo até ' + pageSize + ' de ' + rowsTotal + ' registro(s) - Página ' + pageIndex + ' de ' + pageTotal,
         },
       ],
     };

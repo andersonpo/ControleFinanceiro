@@ -1,1 +1,84 @@
-<p>category-edit works!</p>
+<form [formGroup]="updateForm" (ngSubmit)="updateUser(updateForm.value)">
+  <app-edit-entity
+    name="Categoria"
+    (btnBackClick)="btnBack()"
+    (btnSaveClick)="updateUser(updateForm.value)"
+  >
+    <div class="row">
+      <div class="col-md-12">
+        <label>Nome</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-input
+          name="txtNome"
+          placeholder="Nome Completo"
+          [formGroup]="updateForm"
+          formControlName="name"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Icone</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- https://fontawesome.com/icons?m=free -->
+        <app-input
+          name="txtIcone"
+          placeholder="Icone (FontAwesome)"
+          icon="{{ updateForm?.controls.icon.value }}"
+          [formGroup]="updateForm"
+          formControlName="icon"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Cor</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-input
+          name="txtCor"
+          type="text"
+          inputStyle="'background-color': {{updateForm?.controls.color.value}}"
+          placeholder="Cor (Hex)"
+          [formGroup]="updateForm"
+          formControlName="color"
+          [error]="errorMessage.length > 0"
+        ></app-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div
+          class="error"
+          style="text-align: center;"
+          *ngIf="errorMessage.length > 0"
+        >
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-lg-2">
+        <app-button
+          name="btnSalvar"
+          type="submit"
+          text="Salvar"
+          [disabled]="!updateForm.valid"
+          color="vermelho"
+        ></app-button>
+      </div>
+    </div>
+  </app-edit-entity>
+</form>

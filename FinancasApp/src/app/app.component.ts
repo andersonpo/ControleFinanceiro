@@ -38,9 +38,11 @@ export class AppComponent implements OnInit {
 
   private updateUser(): void {
     this.userToken = this.authService.getUser();
-    this.userService.findById(this.userToken?.Id).subscribe((value) => {
-      this.user = value.result;
-    });
+    if (this.userToken) {
+      this.userService.findById(this.userToken?.Id).subscribe((value) => {
+        this.user = value.result;
+      });
+    }
   }
 
   onTitleClick(): void {
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
   onHeaderUserItemClick(item: UserItem): void {
     switch (item.value) {
       case 'logout':
+        this.user = null;
         this.authService.clearSession();
         break;
       case 'perfil':

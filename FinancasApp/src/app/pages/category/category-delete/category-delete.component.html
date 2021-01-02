@@ -1,1 +1,53 @@
-<p>category-delete works!</p>
+<app-delete-entity
+  name="da Categoria"
+  (btnConfirmClick)="btnConfirm()"
+  (btnCancelClick)="btnCancel()"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Nome</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-input
+        name="inputName"
+        [disabled]="true"
+        value="{{ category?.Name }}"
+      ></app-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Icone</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-input
+        name="inputIcon"
+        [disabled]="true"
+        icon="{{ category?.Icon }}"
+        value="{{ category?.Icon }}"
+      ></app-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Cor</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-input
+        name="inputColor"
+        [disabled]="true"
+        inputStyle="'background-color': {{category?.Color}}"
+        value="{{ category?.Color }}"
+      ></app-input>
+    </div>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+</app-delete-entity>

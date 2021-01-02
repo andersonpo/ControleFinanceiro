@@ -36,6 +36,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() icon = '';
   @Input() showIconRight = false;
   @Input() error = false;
+  @Input() inputStyle = '';
   @Output() actionPressEnter = new EventEmitter();
   @Output() actionValueChange = new EventEmitter();
 
@@ -73,6 +74,23 @@ export class InputComponent implements OnInit, ControlValueAccessor {
       'input-error': this.error === true,
     };
 
+    return result;
+  }
+
+  getStyle(): object {
+    var regexReplace1 = new RegExp('\'', 'g');
+    var regexReplace2 = new RegExp(' ', 'g');
+
+    let result = {}
+    const styles = this.inputStyle.split(';');
+    styles.forEach(item => {
+      const values = item.split(':');
+      
+      if (values && values.length > 1) {
+        result[values[0].replace(regexReplace1, '')] = values[1].replace(regexReplace1, '').replace(regexReplace2, '');
+      }
+    });
+    
     return result;
   }
 

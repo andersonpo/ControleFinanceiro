@@ -79,29 +79,29 @@ export class CategoryListComponent implements OnInit {
       footer: [
         {
           colspan: 5,
-          value: 'Exibindo ' + pageSize + ' de ' + rowsTotal + ' registro(s) - Página ' + pageIndex + ' de ' + pageTotal,
+          value: 'Exibindo até ' + pageSize + ' de ' + rowsTotal + ' registro(s) - Página ' + pageIndex + ' de ' + pageTotal,
         },
       ],
     };
   }
 
   btnCreateClick(): void {
-    this.router.navigate(['/user/create']);
+    this.router.navigate(['/category/create']);
   }
 
   actionClick(data): void {
     switch (data.action) {
       case 'Detalhes':
-        this.router.navigate(['user/details', { id: data.value }]);
+        this.router.navigate(['category/details', { id: data.value }]);
         break;
       case 'Editar':
-        this.router.navigate(['user/edit', { id: data.value }]);
+        this.router.navigate(['category/edit', { id: data.value }]);
         break;
       case 'Foto':
-        this.router.navigate(['user/photo', { id: data.value }]);
+        this.router.navigate(['category/photo', { id: data.value }]);
         break;
       case 'Excluir':
-        this.router.navigate(['user/delete', { id: data.value }]);
+        this.router.navigate(['category/delete', { id: data.value }]);
         break;
 
       default:

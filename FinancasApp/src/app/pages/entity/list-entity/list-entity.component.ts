@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { ITable, typeValue } from '../../../interfaces/itable';
 
 @Component({
@@ -36,7 +37,7 @@ export class ListEntityComponent implements OnInit, OnChanges {
     return colspanPaginated;
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.table) {
@@ -67,7 +68,7 @@ export class ListEntityComponent implements OnInit, OnChanges {
           value = cellValue;
           break;
         case typeValue.colorHex:
-          style = 'background-color: ' + cellValue;    
+          style = 'background-color: ' + cellValue;
           value = cellValue;
           break;
 
@@ -83,6 +84,10 @@ export class ListEntityComponent implements OnInit, OnChanges {
 
   getRowValueIcon(cellValue: any): any {
     return cellValue;
+  }
+
+  btnHome(): void {
+    this.router.navigate(['/home']);
   }
 
   btnCreate(): void {
