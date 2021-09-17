@@ -4,30 +4,30 @@ npm init -y
 
 # Dependencias Dev
 
-npm i -D typescript  
-npm i -D eslint
-npm i -D ts-node
-npm i -D @types/node
-npm i -D @typescript-eslint/parser  
-npm i -D @typescript-eslint/eslint-plugin  
-npm i -D @types/express
-npm i -D @types/body-parser
-npm i -D @types/bcrypt
-npm i -D @types/jsonwebtoken
-npm i -D nodemon
-npm i -D @types/multer
+npm i -D typescript  <br> 
+npm i -D eslint <br>
+npm i -D ts-node <br>
+npm i -D @types/node <br> 
+npm i -D @typescript-eslint/parser <br> 
+npm i -D @typescript-eslint/eslint-plugin <br> 
+npm i -D @types/express <br> 
+npm i -D @types/body-parser <br> 
+npm i -D @types/bcrypt <br> 
+npm i -D @types/jsonwebtoken <br> 
+npm i -D nodemon <br> 
+npm i -D @types/multer <br> 
 
 # Dependencias Produção
 
-npm i -S express => biblioteca web
-npm i -S body-parser => receber dados atraves de json
-npm i -S bcrypt => Cryptografia
-npm i -S jsonwebtoken => JWT Token
-npm i -S sqlite => banco de dados
-npm i -S uuid => guid
-npm i -S morgan => log
-npm i -S multer => receber dados atraves de multipart/form-data
-npm i -S typeorm => ORM, Banco de Dados, Migrations
+npm i -S express => biblioteca web <br> 
+npm i -S body-parser => receber dados atraves de json <br> 
+npm i -S bcrypt => Cryptografia <br> 
+npm i -S jsonwebtoken => JWT Token <br> 
+npm i -S sqlite => banco de dados <br> 
+npm i -S uuid => guid <br> 
+npm i -S morgan => log <br> 
+npm i -S multer => receber dados atraves de multipart/form-data <br> 
+npm i -S typeorm => ORM, Banco de Dados, Migrations <br> 
 
 # Arquivos de configuração
 
