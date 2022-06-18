@@ -10,6 +10,9 @@ export class TestPageComponent implements OnInit {
 
   constructor() {}
   modalOpen = false;
+  modalOpen2 = false;
+  modalOpen3 = false;
+  modalOpen4 = false;
 
   itemsSelect: Array<SelectItem> = [
     { text: '1 Opção X', value: 'X' },
@@ -51,5 +54,35 @@ export class TestPageComponent implements OnInit {
   onCloseModal(): void {
     this.modalOpen = false;
     console.log('fechou modal');
+  }
+
+  btnAbrirModal2(event): void {
+    this.modalOpen2 = true;
+    console.log('abrir modal 2', this.modalOpen2);
+  }
+
+  onCloseModal2(): void {
+    this.modalOpen2 = false;
+    console.log('fechou modal 2');
+  }
+
+  btnAbrirModal3(event): void {
+    this.modalOpen3 = true;
+    console.log('abrir modal 3', this.modalOpen3);
+  }
+
+  onCloseModal3(): void {
+    this.modalOpen3 = false;
+    console.log('fechou modal 3');
+  }
+
+  btnAbrirModal4(event): void {
+    this.modalOpen4 = true;
+    console.log('abrir modal 4', this.modalOpen3);
+  }
+
+  onCloseModal4(): void {
+    this.modalOpen4 = false;
+    console.log('fechou modal 4');
   }
 }

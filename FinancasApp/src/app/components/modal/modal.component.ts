@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -8,17 +8,31 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ModalComponent implements OnInit {
   @Input() name = '';
   @Input() open = false;
+  @Input() title = '';
   @Input() width: number = null;
   @Input() height: number = null;
   @Output() actionClose = new EventEmitter();
+  @ViewChild("modalFooter") modalFooter: ElementRef<HTMLDivElement>;
 
   constructor() {}
-
+  
   ngOnInit(): void {}
 
   closeModal(): void {
     this.open = false;
     this.actionClose.emit();
+  }
+
+  getStyleFooter(): Object {
+    if (this.modalFooter) {
+      const hasFooter = this.modalFooter.nativeElement.childNodes.length > 1;
+      if (hasFooter) {
+        return { display: 'block' };
+      } else {
+        return { display: 'none' };
+      }
+    }
+    return { display: 'block' };
   }
 
   getSizeModal(): object {

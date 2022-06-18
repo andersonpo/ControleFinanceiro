@@ -1,7 +1,7 @@
 <app-create-entity name="Usuário" (btnBackClick)="btnVoltar()">
   <form [formGroup]="createForm" (ngSubmit)="btnSalvar(createForm.value)">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <label>Nome</label>
         <app-input
           name="txtNome"
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <label>Email</label>
         <app-input
           name="txtEmail"
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <label>Senha</label>
         <app-input
           name="txtSenha"
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-2 col-lg-2">
+      <div class="col-2 col-lg-2">
         <app-button
           name="btnSalvar"
           type="submit"
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <div
           class="error"
           style="text-align: center;"

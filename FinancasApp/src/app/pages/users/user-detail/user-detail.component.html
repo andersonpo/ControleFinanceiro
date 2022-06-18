@@ -1,11 +1,11 @@
 <app-detail-entity name="do Usuário" (btnBackClick)="btnBack()">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <label>Nome</label>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <app-input
         name="inputName"
         [disabled]="true"
@@ -14,12 +14,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <label>Email</label>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <app-input
         name="inputEmail"
         [disabled]="true"
@@ -28,12 +28,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <label>Foto</label>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
       <img
         *ngIf="user?.Photo"
         src="data:{{ user?.PhotoType }};base64,{{ user?.Photo }}"

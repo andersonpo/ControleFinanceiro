@@ -1,6 +1,14 @@
 <div *ngIf="open" class="modal-overlay">
   <div class="modal-component" [ngStyle]="getSizeModal()">
     <i class="modal-icon-close fas fa-lg fa-times" (click)="closeModal()"></i>
+    <div *ngIf="title" class="modal-header">
+      <h4 style="font-weight: bold;">{{title}}</h4>
+      <hr>
+    </div>
     <ng-content></ng-content>
+    <div #modalFooter [ngStyle]="getStyleFooter()">
+      <hr />
+      <ng-content select="[footer]"></ng-content>
+    </div>
   </div>
 </div>

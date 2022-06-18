@@ -50,7 +50,7 @@ export class CategoryListComponent implements OnInit {
         { name: 'ID', visible: false, size: null },
         { name: 'Nome', visible: true, size: null },
         { name: 'Icone', visible: true, size: 300 },
-        { name: 'Cor', visible: true, size: 300 },
+        { name: 'Cor', visible: true, size: 200 },
       ],
       rows,
       actions: {

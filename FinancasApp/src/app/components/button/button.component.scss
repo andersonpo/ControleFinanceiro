@@ -14,7 +14,7 @@
 }
 
 .button-component-padding {
-  padding: 8px 16px;
+  padding: 8px 0px;
 }
 
 .button-component-icon-left {
@@ -38,10 +38,16 @@
   cursor: not-allowed;
 }
 
-.button-component:hover {
+.button-component:hover:not(:disabled) {
   background-color: var(--cinzaEscuro);
   color: var(--branco);
   border: 1px solid var(--preto);
+}
+
+.button-component:hover:disabled {
+  border: 1px solid var(--cinzaEscuro);
+  background-color: var(--branco);
+  color: var(--preto);
 }
 
 .button-preto {
@@ -49,10 +55,16 @@
   color: var(--branco);
   border: 1px solid var(--cinzaMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--cinzaMedio);
     color: var(--preto);
     border: 1px solid var(--cinzaEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--preto);
+    color: var(--branco);
+    border: 1px solid var(--cinzaMedio);
   }
 }
 
@@ -61,10 +73,16 @@
   color: var(--branco);
   border: 1px solid var(--cinzaMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--cinzaMedio);
     color: var(--preto);
     border: 1px solid var(--cinzaEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--cinzaEscuro);
+    color: var(--branco);
+    border: 1px solid var(--cinzaMedio);
   }
 }
 
@@ -73,10 +91,16 @@
   color: var(--branco);
   border: 1px solid var(--azulMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--azulMedio);
     color: var(--preto);
     border: 1px solid var(--azulEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--azulEscuro);
+    color: var(--branco);
+    border: 1px solid var(--azulMedio);
   }
 }
 
@@ -85,10 +109,16 @@
   color: var(--branco);
   border: 1px solid var(--verdeMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--verdeMedio);
     color: var(--preto);
     border: 1px solid var(--verdeEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--verdeEscuro);
+    color: var(--branco);
+    border: 1px solid var(--verdeMedio);
   }
 }
 
@@ -97,10 +127,16 @@
   color: var(--branco);
   border: 1px solid var(--vermelhoMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--vermelhoMedio);
     color: var(--preto);
     border: 1px solid var(--vermelhoEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--vermelhoEscuro);
+    color: var(--branco);
+    border: 1px solid var(--vermelhoMedio);
   }
 }
 
@@ -110,9 +146,15 @@
   color: var(--branco);
   border: 1px solid var(--amareloMedio);
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--amareloMedio);
     color: var(--preto);
     border: 1px solid var(--amareloEscuro);
+  }
+
+  &:hover:disabled {
+    background-color: var(--amareloEscuro);
+    color: var(--branco);
+    border: 1px solid var(--amareloMedio);
   }
 }

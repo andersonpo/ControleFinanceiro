@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
   btnCategoriasClick(): void {
     this.router.navigate(['category']);
   }
+
+  btnComponentesClick(): void {
+    this.router.navigate(['components']);
+  }
 }

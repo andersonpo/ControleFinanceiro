@@ -26,11 +26,11 @@
 }
 
 .username {
-  width: 280px;
   height: 80px;
   float: right;
   cursor: pointer;
   margin-top: -8px;
+  margin-right: 20px;
 }
 
 .username-text {
@@ -41,7 +41,7 @@
   vertical-align: top;
   padding-left: 10px;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 26px;
 }
 
 .icon {
@@ -58,25 +58,22 @@
 }
 
 .username-items {
-  margin-top: -4px;
-  z-index: 1;
-  position: absolute;
+  margin-top: -50px;
+  margin-left: 80px;
+  position: fixed;
   background-color: var(--branco);
-  width: 230px;
   cursor: pointer;
   min-height: 40px; // 1 items
   max-height: 320px; // 10 items
   border: 1px solid var(--cinzaMedio);
   border-top-width: 0px;
-  overflow: hidden;
-  overflow-y: auto;
   line-height: normal;
   box-shadow: 0 0 4px 0 var(--cinzaMedio);
   border-radius: 0 0 4px 4px;
 
   & ul {
     margin: 8px 0;
-    padding: 0 16px;
+    padding: 0 8px;
 
     & li {
       list-style-type: none;

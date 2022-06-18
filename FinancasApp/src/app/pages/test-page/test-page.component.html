@@ -1,29 +1,31 @@
-<app-input
-  name="input1"
-  placeholder="sem icone"
-  icon=""
-  [showIconRight]="false"
-  value="sem icone  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
-></app-input>
-<app-input
-  name="input3"
-  placeholder="icone direita"
-  icon="fa-user"
-  [showIconRight]="true"
-  value="icone direita kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
-></app-input>
-<app-input
-  name="input2"
-  placeholder="icone esquerda"
-  icon="fa-user"
-  [showIconRight]="false"
-  value="icone esquerda  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
-></app-input>
+<div class="col-12">
+  <app-input
+    name="input1"
+    placeholder="sem icone"
+    icon=""
+    [showIconRight]="false"
+    value="sem icone  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+  ></app-input>
+  <app-input
+    name="input3"
+    placeholder="icone direita"
+    icon="fa-user"
+    [showIconRight]="true"
+    value="icone direita kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+  ></app-input>
+  <app-input
+    name="input2"
+    placeholder="icone esquerda"
+    icon="fa-user"
+    [showIconRight]="false"
+    value="icone esquerda  kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+  ></app-input>
+</div>
 
 <hr />
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-6">
     NORMAL
     <app-button
       name="btn1"
@@ -74,7 +76,7 @@
       (click)="btnClick($event)"
     ></app-button>
   </div>
-  <div class="col-md-6">
+  <div class="col-6">
     DISABLED
     <app-button
       name="btn1"
@@ -130,7 +132,7 @@
 <hr />
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-4">
     ICON
     <app-button
       name="btn1"
@@ -191,7 +193,7 @@
     ></app-button>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-4">
     ICON RIGHT
     <app-button
       name="btn1"
@@ -259,7 +261,7 @@
     ></app-button>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-4">
     ICON ONLY
     <app-button
       name="btn1"
@@ -313,7 +315,9 @@
     ></app-button>
   </div>
 </div>
+
 <hr />
+
 <app-select
   name="select1"
   placeholder="Selecione 1 item"
@@ -321,7 +325,9 @@
   [selectedItem]="itemSelected"
   (actionSelected)="selectedItem($event)"
 ></app-select>
+
 <hr />
+
 <app-card name="card1">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
@@ -344,7 +350,8 @@
     lacinia, quam turpis pharetra lorem, dignissim aliquet est enim et sem.
   </p>
 </app-card>
-<app-card name="card1" [width]="400" [height]="200">
+
+<app-card name="card2" [width]="400" [height]="200">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
     nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
@@ -352,7 +359,8 @@
     turpis eu ullamcorper. Donec rhoncus commodo tempus.
   </p>
 </app-card>
-<app-card name="card1" [width]="600" [height]="400">
+
+<app-card name="card3" [width]="600" [height]="400">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
     nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
@@ -369,7 +377,9 @@
     finibus volutpat mi non consectetur.
   </p>
 </app-card>
+
 <hr />
+
 <app-button
   name="btnModal"
   text="Abrir Modal"
@@ -377,41 +387,191 @@
   color="vermelho"
   (click)="btnAbrirModal($event)"
 ></app-button>
+
 <app-modal
   name="modal1"
   [width]="800"
   [height]="470"
   [open]="modalOpen"
   (actionClose)="onCloseModal()"
+  title="Titulo Modal"
 >
-  <span style="font-size: 22px; font-weight: bold;">Titulo Modal</span>
-  <hr />
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
-    nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
-    pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
-    turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
-    urna eu semper venenatis. Donec dolor eros, molestie non augue at,
-    ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
-    Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
-    sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
-    efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
-    interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
-    libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
-    nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
-    finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
-    fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
-    facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
-    luctus convallis sapien in, elementum egestas sem.
-  </p>
-  <hr />
-  <app-button
-    style="position: absolute; right: 10px; bottom: 10px;"
-    name="btnModalFechar"
-    text="Fechar"
-    [disabled]="false"
-    color="vermelho"
-    (click)="btnFecharModal($event)"
-  ></app-button>
+  
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+        nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+        pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+        turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+        urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+        ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+        Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+        sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+        efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+        interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+        libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+        nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+        finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
+        fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
+        facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
+        luctus convallis sapien in, elementum egestas sem.
+      </p>
+    </div>
+  </div>
+
+  <div footer class="row">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <app-button
+        name="btnModalFechar"
+        text="Fechar"
+        [disabled]="false"
+        color="vermelho"
+        (click)="btnFecharModal($event)"
+      ></app-button>
+    </div>
+  </div>
+
 </app-modal>
+
 <hr />
+
+<app-button
+  name="btnModal2"
+  text="Abrir Modal Sem Footer"
+  [disabled]="false"
+  color="vermelho"
+  (click)="btnAbrirModal2($event)"
+></app-button>
+
+<app-modal
+  name="modal2"
+  [width]="800"
+  [height]="370"
+  [open]="modalOpen2"
+  (actionClose)="onCloseModal2()"
+  title="Modal sem footer"
+>
+  
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+        nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+        pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+        turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+        urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+        ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+        Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+        sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+        efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+        interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+        libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+        nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+        finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
+        fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
+        facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
+        luctus convallis sapien in, elementum egestas sem.
+      </p>
+    </div>
+  </div>
+
+</app-modal>
+
+<hr />
+
+<app-button
+  name="btnModal3"
+  text="Abrir Modal Sem Titulo e Sem Footer"
+  [disabled]="false"
+  color="vermelho"
+  (click)="btnAbrirModal3($event)"
+></app-button>
+
+<app-modal
+  name="modal3"
+  [width]="800"
+  [height]="330"
+  [open]="modalOpen3"
+  (actionClose)="onCloseModal3()"
+>
+  
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+        nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+        pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+        turpis eu ullamcorper. Donec rhoncus commodo tempus. Vestibulum hendrerit
+        urna eu semper venenatis. Donec dolor eros, molestie non augue at,
+        ullamcorper elementum massa. Vestibulum dapibus sollicitudin vestibulum.
+        Nullam hendrerit, augue sed hendrerit tincidunt, justo mauris ultrices ex,
+        sit amet gravida urna arcu sed quam. Nullam mattis augue et tellus faucibus,
+        efficitur dapibus lorem maximus. Nulla eget neque non sapien volutpat
+        interdum. Donec suscipit ligula at placerat blandit. Vestibulum gravida
+        libero nulla, ut elementum nisl aliquet id. Nulla enim risus, suscipit id
+        nibh eu, ornare porttitor velit. Aenean dictum nec enim et egestas. Praesent
+        finibus volutpat mi non consectetur. Aliquam erat volutpat. Aenean eget quam
+        fermentum, ullamcorper turpis in, lobortis leo. Quisque consequat purus
+        facilisis neque malesuada, eu feugiat lorem suscipit. Nullam tellus leo,
+        luctus convallis sapien in, elementum egestas sem.
+      </p>
+    </div>
+  </div>
+
+</app-modal>
+
+<hr />
+
+<app-button
+  name="btnModal4"
+  text="Abrir Modal Confirmação"
+  [disabled]="false"
+  color="vermelho"
+  (click)="btnAbrirModal4($event)"
+></app-button>
+
+<app-modal
+  name="modal4"
+  [width]="800"
+  [height]="252"
+  [open]="modalOpen4"
+  (actionClose)="onCloseModal4()"
+  title="Confirma os dados abaixo?"
+>
+  
+  <div class="row">
+    <div class="col-12">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque
+        nisi orci. Ut porta vehicula ligula eu malesuada. Donec faucibus
+        pellentesque elit, in finibus augue sollicitudin id. Vivamus ornare dictum
+        turpis eu ullamcorper. Donec rhoncus commodo tempus.
+      </p>
+    </div>
+  </div>
+
+  <div footer class="row">
+    <div class="col-8"></div>
+    <div class="col-2">
+      <app-button
+        name="btnModalFechar"
+        text="Cancelar"
+        [disabled]="false"
+        color="vermelho"
+        (click)="onCloseModal4()"
+      ></app-button>
+    </div>
+    <div class="col-2">
+      <app-button
+        name="btnModalFechar2"
+        text="Confirmar"
+        [disabled]="false"
+        color="verde"
+        (click)="onCloseModal4()"
+      ></app-button>
+    </div>
+  </div>
+
+</app-modal>
